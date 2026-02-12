@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Net.Http;
+﻿using Newtonsoft.Json;
+using StargazingApp.Models;
+using System.Net.Http.Json;
 
 namespace StargazingApp;
 
@@ -14,8 +15,7 @@ public class NasaApiService
         _httpClient = new HttpClient();
     }
 
-    // return 'dynamic' so we can access properties on the fly
-    public async Task<dynamic?> GetApodAsync()
+    public async Task<ApodData?> GetApodAsync()
     {
         try
         {
@@ -25,15 +25,43 @@ public class NasaApiService
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
-
-                dynamic data = JObject.Parse(jsonString);
-                return data;
+                var apodData = JsonConvert.DeserializeObject<ApodData>(jsonString);
+                return apodData;
             }
-            return null;
+            else
+            {
+                return null;
+            }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error fetching APOD: {ex.Message}");
+            return null;
+        }
+    }
+
+    public async Task<ApodData?> GetApodByDateAsync(DateTime date)
+    {
+        try
+        {
+            var dateString = date.ToString("yyyy-MM-dd");
+            var url = $"{BaseUrl}?api_key={ApiKey}&date={dateString}";
+            var response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var apodData = JsonConvert.DeserializeObject<ApodData>(jsonString);
+                return apodData;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error fetching APOD: {ex.Message}");
             return null;
         }
     }

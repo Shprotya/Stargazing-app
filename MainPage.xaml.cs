@@ -14,35 +14,38 @@ public partial class MainPage : ContentPage
     {
         try
         {
-            // apodData is 'dynamic'
             var apodData = await _nasaApiService.GetApodAsync();
 
             if (apodData != null)
             {
-                TitleLabel.Text = apodData.title;
+                // Display title
+                TitleLabel.Text = apodData.Title;
 
-                DateLabel.Text = $"Date: {apodData.date}";
+                // Display date
+                DateLabel.Text = $"Date: {apodData.Date}";
 
-                // Checking media_type
-                if (apodData.media_type == "image")
+                // Display image if media type is image
+                if (apodData.MediaType == "image")
                 {
-                    ApodImage.Source = ImageSource.FromUri(new Uri((string)apodData.url));
+                    ApodImage.Source = ImageSource.FromUri(new Uri(apodData.Url));
                     ImageFrame.IsVisible = true;
                 }
 
-                // Checking copyright
-                if (apodData.copyright != null)
+                // Display copyright if available
+                if (!string.IsNullOrEmpty(apodData.Copyright))
                 {
-                    CopyrightLabel.Text = $"© {apodData.copyright}";
+                    CopyrightLabel.Text = $"© {apodData.Copyright}";
                     CopyrightLabel.IsVisible = true;
                 }
 
-                ExplanationLabel.Text = apodData.explanation;
+                // Display explanation
+                ExplanationLabel.Text = apodData.Explanation;
                 ExplanationFrame.IsVisible = true;
             }
+
             else
             {
-                ErrorLabel.Text = "Failed to load data.";
+                ErrorLabel.Text = "Failed to load data. Please check your internet connection and try again.";
                 ErrorLabel.IsVisible = true;
             }
         }
@@ -50,12 +53,6 @@ public partial class MainPage : ContentPage
         {
             ErrorLabel.Text = $"Error: {ex.Message}";
             ErrorLabel.IsVisible = true;
-        }
-        finally
-        {
-            LoadingIndicator.IsRunning = false;
-            LoadingIndicator.IsVisible = false;
-            LoadApodButton.IsEnabled = true;
         }
     }
 }
