@@ -19,6 +19,10 @@ namespace StargazingApp
     		builder.Logging.AddDebug();
 #endif
 
+            // Register services
+            builder.Services.AddSingleton<NasaApiService>();
+            builder.Services.AddSingleton<MainPage>();
+
             return builder.Build();
         }
     }
