@@ -5,74 +5,31 @@
              BackgroundColor="{StaticResource Main}">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="20">
+        <Grid ColumnDefinitions="2*, *" ColumnSpacing="20" Padding="20">
 
-            <!-- Header -->
-            <Label Text="🌟 Stargazing"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,10"/>
-
-            <!-- NASA Astronomy Picture of the Day Section -->
-            <Frame BackgroundColor="{StaticResource Sections}"
-                   BorderColor="{StaticResource Button}"
-                   CornerRadius="15"
-                   Padding="15"
-                   HasShadow="True">
+            <Frame Grid.Column="0" 
+               BackgroundColor="{StaticResource Sections}"
+               CornerRadius="15" Padding="15">
                 <VerticalStackLayout Spacing="15">
-
-                    <Label Text="NASA Picture of the Day"
-                           FontSize="20"
-                           FontAttributes="Bold"/>
+                    <Label Text="NASA Picture of the Day" FontSize="20" FontAttributes="Bold"/>
 
                     <Button x:Name="LoadApodButton"
-                            Text="Load Today's Picture"
-                            BackgroundColor="{StaticResource Button}"
-                            Clicked="OnLoadApodClicked"
-                            CornerRadius="10"
-                            HeightRequest="50"/>
+                        Text="Load Today's Picture"
+                        BackgroundColor="{StaticResource Button}"
+                        Clicked="OnLoadApodClicked"
+                        HeightRequest="50"/>
 
-                    <!-- Title -->
-                    <Label x:Name="TitleLabel"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           LineBreakMode="WordWrap"/>
+                    <Label x:Name="TitleLabel" FontSize="18" FontAttributes="Bold"/>
+                    <Label x:Name="DateLabel" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
 
-                    <!-- Date -->
-                    <Label x:Name="DateLabel"
-                           FontSize="14"
-                           LineBreakMode="WordWrap"
-                           TextColor="{StaticResource OrbitGray}"/>
-
-                    <!-- Image -->
-                    <Frame Padding="0"
-                           CornerRadius="10"
-                           IsClippedToBounds="True"
-                           BorderColor="Transparent"
-                           x:Name="ImageFrame"
-                           IsVisible="False">
-                        <Image x:Name="ApodImage"
-                               Aspect="AspectFit"
-                               HeightRequest="300"/>
+                    <Frame x:Name="ImageFrame" Padding="0" IsClippedToBounds="True" IsVisible="False">
+                        <Image x:Name="ApodImage" Aspect="AspectFit" HeightRequest="300"/>
                     </Frame>
 
-                    <!-- Copyright -->
-                    <Label x:Name="CopyrightLabel"
-                           FontSize="12"
-                           LineBreakMode="WordWrap"
-                           IsVisible="False"
-                           TextColor="{StaticResource OrbitGray}"/>
+                    <Label x:Name="CopyrightLabel" FontSize="12" IsVisible="False" TextColor="{StaticResource OrbitGray}"/>
 
-                    <!-- Explanation -->
-                    <Frame Padding="10"
-                           CornerRadius="8"
-                           BorderColor="Transparent"
-                           x:Name="ExplanationFrame"
-                           IsVisible="False">
-                        <Label x:Name="ExplanationLabel"
-                               FontSize="14"
-                               LineBreakMode="WordWrap"/>
+                    <Frame x:Name="ExplanationFrame" BackgroundColor="{StaticResource Sections}" IsVisible="False">
+                        <Label x:Name="ExplanationLabel" FontSize="14"/>
                     </Frame>
 
                     <!-- Error Message -->
@@ -81,9 +38,37 @@
                            TextColor="#EF4444"
                            LineBreakMode="WordWrap"
                            IsVisible="False"/>
+                    
                 </VerticalStackLayout>
             </Frame>
-        </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="20">
+
+                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="🌙" FontSize="30"/>
+                            <VerticalStackLayout>
+                                <Label Text="Waxing Gibbous" FontAttributes="Bold"/>
+                                <Label Text="Illumination: 78%" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                        <Label Text="Visibility: Excellent" FontSize="12" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Upcoming Events" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="• Meteor Shower (Dec 14)" FontSize="13"/>
+                        <Label Text="• New Moon (Dec 30)" FontSize="13"/>
+                        <Label Text="• Mars Conjunction" FontSize="13"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 
 </ContentPage>
