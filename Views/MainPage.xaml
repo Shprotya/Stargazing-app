@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="StargazingApp.MainPage"
+             x:Class="StargazingApp.Views.MainPage"
              BackgroundColor="{StaticResource Main}">
 
     <ScrollView>
@@ -11,34 +11,53 @@
                BackgroundColor="{StaticResource Sections}"
                CornerRadius="15" Padding="15">
                 <VerticalStackLayout Spacing="15">
+
                     <ActivityIndicator x:Name="LoadingIndicator"
-                       IsRunning="True"
-                       IsVisible="True"
+                       IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"
                        Color="{StaticResource NovaPurple}"
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
 
-                    <Label Text="NASA Picture of the Day" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="NASA Picture of the Day" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
 
-                    <Label x:Name="TitleLabel" FontSize="18" FontAttributes="Bold"/>
-                    <Label x:Name="DateLabel" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
+                    <Label Text="{Binding ApodData.Title}" 
+                           FontSize="18" 
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding ApodData.Date}" 
+                           FontSize="14" 
+                           TextColor="{StaticResource OrbitGray}"/>
 
-                    <Frame x:Name="ImageFrame" Padding="0" IsClippedToBounds="True" IsVisible="False">
-                        <Image x:Name="ApodImage" Aspect="AspectFit" HeightRequest="300"/>
+                    <Frame x:Name="ImageFrame" 
+                           Padding="0" 
+                           IsClippedToBounds="True" >
+                        
+                        <Image Source="{Binding ApodData.Url}" 
+                               Aspect="AspectFit" 
+                               HeightRequest="300"/>
                     </Frame>
 
-                    <Label x:Name="CopyrightLabel" FontSize="12" IsVisible="False" TextColor="{StaticResource OrbitGray}"/>
+                    <Label FontSize="12" 
+                           Text="{Binding ApodData.Copyright}"
+                           TextColor="{StaticResource OrbitGray}"/>
 
-                    <Frame x:Name="ExplanationFrame" BackgroundColor="{StaticResource Sections}" IsVisible="False">
-                        <Label x:Name="ExplanationLabel" FontSize="14"/>
+                    <Frame x:Name="ExplanationFrame" 
+                           BackgroundColor="{StaticResource Sections}" >
+                        <Label Text="{Binding ApodData.Explanation}" FontSize="14"/>
                     </Frame>
 
                     <!-- Error Message -->
                     <Label x:Name="ErrorLabel"
-                           FontSize="14"
-                           TextColor="#EF4444"
-                           LineBreakMode="WordWrap"
-                           IsVisible="False"/>
-                    
+                       Text="{Binding ErrorMessage}"
+                       IsVisible="{Binding HasError}"
+                       FontSize="14"
+                       TextColor="#EF4444"
+                       HorizontalOptions="Center"
+                       LineBreakMode="WordWrap"
+                       Margin="0,10,0,0"/>      
+
                 </VerticalStackLayout>
             </Frame>
 
