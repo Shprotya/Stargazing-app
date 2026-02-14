@@ -4,13 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="ActivityIndicator">
-        <Setter Property="Color" Value="{StaticResource Primary}" />
-    </Style>
-
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource StarWhite}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource NebulaPurple}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="CornerRadius" Value="8"/>
@@ -39,6 +34,8 @@
     </Style>
 
     <Style TargetType="Frame">
+        <Setter Property="BorderColor" Value="{StaticResource Button}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Sections}"/>
         <Setter Property="HasShadow" Value="True" />
         <Setter Property="BorderColor" Value="Transparent" />
         <Setter Property="CornerRadius" Value="8" />

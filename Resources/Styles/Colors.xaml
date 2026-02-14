@@ -4,21 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Space Theme Colors -->
-    <Color x:Key="Primary">#6366F1</Color>
-    <Color x:Key="Secondary">#1A1F3A</Color>
-    <Color x:Key="Tertiary">#94A3B8</Color>
+    <!--Page background-->
+    <Color x:Key="Main">#0B0E14</Color>
 
-    <!-- Background Colors -->
-    <Color x:Key="SpaceBlack">#0B0D17</Color>
-    <Color x:Key="DeepSpaceBlue">#1A1F3A</Color>
+    <!--Frames/Cards-->
+    <Color x:Key="Sections">#1A1C26</Color>
 
-    <!-- Text Colors -->
-    <Color x:Key="StarWhite">#FFFFFF</Color>
-    <Color x:Key="CosmicGray">#94A3B8</Color>
+    <!--Buttons/Border Color-->
+    <Color x:Key="Button">#2D324A</Color>
 
-    <!-- Accent Colors -->
-    <Color x:Key="NebulaPurple">#6366F1</Color>
-    <Color x:Key="ErrorRed">#EF4444</Color>
+    <!--Primary Text-->
+    <Color x:Key="StarWhite">#F8FAFC</Color>
+    <!--SecondaryText-->
+    <Color x:Key="OrbitGray">#94A3B8</Color>
 
+    <!--Highlights-->
+    <Color x:Key="NovaPurple">#A855F7</Color>
+    
 </ResourceDictionary>

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="StargazingApp.MainPage"
-             BackgroundColor="{StaticResource SpaceBlack}">
+             BackgroundColor="{StaticResource Main}">
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
@@ -11,13 +11,12 @@
             <Label Text="🌟 Stargazing"
                    FontSize="32"
                    FontAttributes="Bold"
-                   TextColor="{StaticResource StarWhite}"
                    HorizontalOptions="Center"
                    Margin="0,20,0,10"/>
 
             <!-- NASA Astronomy Picture of the Day Section -->
-            <Frame BackgroundColor="{StaticResource DeepSpaceBlue}"
-                   BorderColor="{StaticResource NebulaPurple}"
+            <Frame BackgroundColor="{StaticResource Sections}"
+                   BorderColor="{StaticResource Button}"
                    CornerRadius="15"
                    Padding="15"
                    HasShadow="True">
@@ -25,36 +24,26 @@
 
                     <Label Text="NASA Picture of the Day"
                            FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="{StaticResource StarWhite}"/>
+                           FontAttributes="Bold"/>
 
                     <Button x:Name="LoadApodButton"
                             Text="Load Today's Picture"
-                            BackgroundColor="{StaticResource NebulaPurple}"
-                            TextColor="{StaticResource StarWhite}"
+                            BackgroundColor="{StaticResource Button}"
                             Clicked="OnLoadApodClicked"
                             CornerRadius="10"
                             HeightRequest="50"/>
-
-                    <!-- Loading Indicator -->
-                    <ActivityIndicator x:Name="LoadingIndicator"
-                                       IsRunning="False"
-                                       IsVisible="False"
-                                       Color="{StaticResource NebulaPurple}"
-                                       HeightRequest="40"/>
 
                     <!-- Title -->
                     <Label x:Name="TitleLabel"
                            FontSize="18"
                            FontAttributes="Bold"
-                           TextColor="{StaticResource StarWhite}"
                            LineBreakMode="WordWrap"/>
 
                     <!-- Date -->
                     <Label x:Name="DateLabel"
                            FontSize="14"
-                           TextColor="{StaticResource CosmicGray}"
-                           LineBreakMode="WordWrap"/>
+                           LineBreakMode="WordWrap"
+                           TextColor="{StaticResource OrbitGray}"/>
 
                     <!-- Image -->
                     <Frame Padding="0"
@@ -71,20 +60,18 @@
                     <!-- Copyright -->
                     <Label x:Name="CopyrightLabel"
                            FontSize="12"
-                           TextColor="{StaticResource CosmicGray}"
                            LineBreakMode="WordWrap"
-                           IsVisible="False"/>
+                           IsVisible="False"
+                           TextColor="{StaticResource OrbitGray}"/>
 
                     <!-- Explanation -->
-                    <Frame BackgroundColor="#1E293B"
-                           Padding="10"
+                    <Frame Padding="10"
                            CornerRadius="8"
                            BorderColor="Transparent"
                            x:Name="ExplanationFrame"
                            IsVisible="False">
                         <Label x:Name="ExplanationLabel"
                                FontSize="14"
-                               TextColor="{StaticResource CosmicGray}"
                                LineBreakMode="WordWrap"/>
                     </Frame>
 
