@@ -2,24 +2,40 @@
 
 namespace StargazingApp.Views;
 
+/// <summary>
+/// This class handles the initialization and lifecycle events of the page.
+/// Follows the MVVM pattern by connecting the View to the ViewModel.
+/// </summary>
 public partial class MainPage : ContentPage
 {
-    // We inject the ViewMode
+    /// <summary>
+    /// Constructor that receives the MainViewModel through dependency injection.
+    /// Sets up the binding context to connect the XAML UI to the ViewModel properties.
+    /// </summary>
     public MainPage(MainViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel; // This connects the XAML to the ViewModel
+
+        // Set the BindingContext - this connects all {Binding} expressions in XAML
+        BindingContext = viewModel;
     }
 
+    /// <summary>
+    /// Called when the page is about to appear on the screen.
+    /// Automatically triggers loading of NASA's Picture of the Day data.
+    /// This ensures fresh data is loaded each time the user navigates to this page.
+    /// </summary>
     protected override void OnAppearing()
     {
+        // Call the base implementation first
         base.OnAppearing();
 
-        // Tell the ViewModel to load the data automatically
+        // Cast the BindingContext back to MainViewModel to access its commands
         var vm = (MainViewModel)BindingContext;
-        if (vm.LoadApodCommand.CanExecute(null))
-        {
-            vm.LoadApodCommand.Execute(null);
-        }
+
+        // Execute the command to load APOD data
+        // This will trigger the LoadApod() method in the ViewModel
+        vm.LoadApodCommand.Execute(null);
+        
     }
 }

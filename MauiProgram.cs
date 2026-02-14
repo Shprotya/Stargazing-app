@@ -22,6 +22,7 @@ namespace StargazingApp
 #endif
 
             // Register services
+            // Services registered as Singleton live for the entire application lifetime.
             builder.Services.AddSingleton<NasaApiService>(); 
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<MainPage>();
