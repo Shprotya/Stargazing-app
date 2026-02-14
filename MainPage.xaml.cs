@@ -10,8 +10,13 @@ public partial class MainPage : ContentPage
         _nasaApiService = nasaApiService;
     }
 
-    private async void OnLoadApodClicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
     {
+        base.OnAppearing();
+
+        LoadingIndicator.IsRunning = true;
+        LoadingIndicator.IsVisible = true;
+
         try
         {
             var apodData = await _nasaApiService.GetApodAsync();
@@ -54,5 +59,16 @@ public partial class MainPage : ContentPage
             ErrorLabel.Text = $"Error: {ex.Message}";
             ErrorLabel.IsVisible = true;
         }
+        finally
+        {
+            // This ensures the spinner stops even if there is an error
+            LoadingIndicator.IsRunning = false;
+            LoadingIndicator.IsVisible = false;
+        }
+    }
+
+    private async void OnLoadApodClicked(object sender, EventArgs e)
+    {
+        
     }
 }

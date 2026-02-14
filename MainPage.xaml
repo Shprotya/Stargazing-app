@@ -11,13 +11,13 @@
                BackgroundColor="{StaticResource Sections}"
                CornerRadius="15" Padding="15">
                 <VerticalStackLayout Spacing="15">
-                    <Label Text="NASA Picture of the Day" FontSize="20" FontAttributes="Bold"/>
+                    <ActivityIndicator x:Name="LoadingIndicator"
+                       IsRunning="True"
+                       IsVisible="True"
+                       Color="{StaticResource NovaPurple}"
+                       HorizontalOptions="Center" />
 
-                    <Button x:Name="LoadApodButton"
-                        Text="Load Today's Picture"
-                        BackgroundColor="{StaticResource Button}"
-                        Clicked="OnLoadApodClicked"
-                        HeightRequest="50"/>
+                    <Label Text="NASA Picture of the Day" FontSize="20" FontAttributes="Bold"/>
 
                     <Label x:Name="TitleLabel" FontSize="18" FontAttributes="Bold"/>
                     <Label x:Name="DateLabel" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
