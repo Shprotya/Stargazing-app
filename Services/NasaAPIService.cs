@@ -13,7 +13,6 @@ public class NasaApiService
     // HttpClient for making HTTP requests to the NASA API
     private readonly HttpClient _httpClient;
 
-    private const string ApiKey = "9HdK398eTbD3leLSbVGYwV1YpetcNNWtpClTv5Qw";
     private const string BaseUrl = "https://api.nasa.gov/planetary/apod";
 
     public NasaApiService()
@@ -32,7 +31,7 @@ public class NasaApiService
         try
         {
             // Construct the API URL with the authentication key
-            var url = $"{BaseUrl}?api_key={ApiKey}";
+            var url = $"{BaseUrl}?api_key={APIkeys.NasaApiKey}";
 
             // Send GET request to NASA API
             var response = await _httpClient.GetAsync(url);
@@ -76,7 +75,7 @@ public class NasaApiService
             var dateString = date.ToString("yyyy-MM-dd");
 
             // Construct the API URL
-            var url = $"{BaseUrl}?api_key={ApiKey}&date={dateString}";
+            var url = $"{BaseUrl}?api_key={APIkeys.NasaApiKey}&date={dateString}";
 
             // Send GET request to NASA API
             var response = await _httpClient.GetAsync(url);

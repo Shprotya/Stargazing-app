@@ -3,14 +3,12 @@
 namespace StargazingApp.Views;
 
 /// <summary>
-/// This class handles the initialization and lifecycle events of the page.
 /// Follows the MVVM pattern by connecting the View to the ViewModel.
 /// </summary>
 public partial class MainPage : ContentPage
 {
     /// <summary>
     /// Constructor that receives the MainViewModel through dependency injection.
-    /// Sets up the binding context to connect the XAML UI to the ViewModel properties.
     /// </summary>
     public MainPage(MainViewModel viewModel)
     {

@@ -27,22 +27,18 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>
     /// Indicates whether the app is currently loading data from the API.
-    /// Used to control the visibility of the loading spinner in the UI.
-    /// When true, the ActivityIndicator is displayed to give user feedback.
     /// </summary>
     [ObservableProperty]
     private bool _isBusy;
 
     /// <summary>
     /// Contains any error message that occurs during API calls.
-    /// Displayed to the user when HasError is true.
     /// </summary>
     [ObservableProperty]
     private string _errorMessage;
 
     /// <summary>
     /// Indicates whether an error has occurred.
-    /// Used to control the visibility of error messages in the UI.
     /// </summary>
     [ObservableProperty]
     private bool _hasError;
