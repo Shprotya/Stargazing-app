@@ -25,6 +25,7 @@ namespace StargazingApp
 
             // Register services
             builder.Services.AddSingleton<NasaApiService>();
+            builder.Services.AddSingleton<DatabaseService>();
 
             // Register the View Models
             builder.Services.AddSingleton<MainViewModel>();
@@ -33,6 +34,7 @@ namespace StargazingApp
             // Register the Views
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<ConstellationPage>();
+
 
             return builder.Build();
         }
