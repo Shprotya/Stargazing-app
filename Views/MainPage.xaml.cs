@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
-        // Set the BindingContext - this connects all {Binding} expressions in XAML
+        // Set the BindingContext - this connects all {Binding} expressions in XAML 
         BindingContext = viewModel;
     }
 

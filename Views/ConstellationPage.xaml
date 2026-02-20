@@ -4,9 +4,15 @@
              x:Class="StargazingApp.Views.ConstellationPage"
              Title="ConstellationPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <CollectionView x:Name="ConstellationList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="10">
+                        <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
+                        <Label Text="{Binding Description}" FontSize="14" TextColor="{StaticResource OrbitGray}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
