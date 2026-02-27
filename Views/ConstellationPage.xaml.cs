@@ -89,6 +89,7 @@ public partial class ConstellationPage : ContentPage
     /// </summary>
     private void OnFilterAll(object sender, EventArgs e)
     {
+        UpdateButtonColors(sender as Button);
         ConstellationList.ItemsSource = _allConstellations;
         SearchBar.Text = string.Empty;
     }
@@ -98,6 +99,7 @@ public partial class ConstellationPage : ContentPage
     /// </summary>
     private async void OnFilterNorthern(object sender, EventArgs e)
     {
+        UpdateButtonColors(sender as Button);
         try
         {
             var results = await _databaseService.GetConstellationsByHemisphereAsync("Northern");
@@ -115,6 +117,7 @@ public partial class ConstellationPage : ContentPage
     /// </summary>
     private async void OnFilterSouthern(object sender, EventArgs e)
     {
+        UpdateButtonColors(sender as Button);
         try
         {
             var results = await _databaseService.GetConstellationsByHemisphereAsync("Southern");
@@ -132,6 +135,7 @@ public partial class ConstellationPage : ContentPage
     /// </summary>
     private async void OnFilterFavorites(object sender, EventArgs e)
     {
+        UpdateButtonColors(sender as Button);
         try
         {
             var results = await _databaseService.GetFavoriteConstellationsAsync();
@@ -153,21 +157,23 @@ public partial class ConstellationPage : ContentPage
         {
             try
             {
+                // Toggle in database
                 await _databaseService.ToggleFavoriteAsync(constellationId);
 
-                // Refresh the current view
-                if (ConstellationList.ItemsSource is List<Constellation> currentList)
-                {
-                    var constellation = currentList.FirstOrDefault(c => c.Id == constellationId);
-                    if (constellation != null)
-                    {
-                        constellation.IsFavorite = !constellation.IsFavorite;
+                // Reload all constellations from database
+                _allConstellations = await _databaseService.GetConstellationsAsync();
 
-                        // Force UI refresh
-                        var temp = ConstellationList.ItemsSource;
-                        ConstellationList.ItemsSource = null;
-                        ConstellationList.ItemsSource = temp;
-                    }
+                // Refresh the current view to show updated star
+                var currentItems = ConstellationList.ItemsSource as List<Constellation>;
+                if (currentItems != null)
+                {
+                    // Recreate the list with updated data
+                    var updatedItems = _allConstellations
+                        .Where(c => currentItems.Any(ci => ci.Id == c.Id))
+                        .ToList();
+
+                    ConstellationList.ItemsSource = null;
+                    ConstellationList.ItemsSource = updatedItems;
                 }
             }
             catch (Exception ex)
@@ -178,26 +184,43 @@ public partial class ConstellationPage : ContentPage
     }
 
     /// <summary>
-    /// Handle constellation selection for detail view (optional - you can expand this later)
+    /// Refresh the current view to update favorite icons
     /// </summary>
-    private async void OnConstellationSelected(object sender, SelectionChangedEventArgs e)
+    private async Task RefreshCurrentView()
     {
-        if (e.CurrentSelection.FirstOrDefault() is Constellation constellation)
-        {
-            // For now, just show an alert with details
-            await DisplayAlert(
-                constellation.Name,
-                $"Abbreviation: {constellation.Abbreviation}\n" +
-                $"Hemisphere: {constellation.Hemisphere}\n" +
-                $"Best Month: {constellation.BestVisibleMonth}\n" +
-                $"Brightest Star: {constellation.BrightestStar}\n" +
-                $"Visible: {constellation.VisibleLatitude}\n\n" +
-                $"{constellation.Description}",
-                "OK"
-            );
+        // Store the current items source type
+        var currentItems = ConstellationList.ItemsSource as List<Constellation>;
 
-            // Deselect the item
-            ((CollectionView)sender).SelectedItem = null;
+        if (currentItems != null && currentItems.Count > 0)
+        {
+            // Reload from database
+            _allConstellations = await _databaseService.GetConstellationsAsync();
+
+            // Reapply the current filter
+            if (currentItems.All(c => c.IsFavorite))
+            {
+                // Favorites filter was active
+                ConstellationList.ItemsSource = await _databaseService.GetFavoriteConstellationsAsync();
+            }
+            else
+            {
+                // Refresh with updated data
+                ConstellationList.ItemsSource = _allConstellations
+                    .Where(c => currentItems.Any(ci => ci.Id == c.Id))
+                    .ToList();
+            }
         }
+    }
+
+    private void UpdateButtonColors(Button selectedButton)
+    {
+        // Reset all buttons to the default color
+        BtnAll.BackgroundColor = (Color)Application.Current.Resources["Button"];
+        BtnNorth.BackgroundColor = (Color)Application.Current.Resources["Button"];
+        BtnSouth.BackgroundColor = (Color)Application.Current.Resources["Button"];
+        BtnFav.BackgroundColor = (Color)Application.Current.Resources["Button"];
+
+        // Highlight the selected one
+        selectedButton.BackgroundColor = (Color)Application.Current.Resources["NovaPurple"];
     }
 }

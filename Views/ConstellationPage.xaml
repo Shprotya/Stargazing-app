@@ -40,74 +40,98 @@
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
-        <!-- Constellation List -->
+        <!-- Constellation Grid Gallery -->
         <CollectionView x:Name="ConstellationList" 
                        Grid.Row="1"
-                       SelectionMode="Single"
-                       SelectionChanged="OnConstellationSelected">
+                       SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                                Span="4"
+                                HorizontalItemSpacing="12"
+                                VerticalItemSpacing="12"/>
+            </CollectionView.ItemsLayout>
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Margin="0,0,0,15" 
-                          Padding="15"
-                          BackgroundColor="{StaticResource Sections}">
-                        <Grid ColumnDefinitions="80,*,Auto" ColumnSpacing="15">
-
-                            <!-- Constellation Image -->
-                            <Frame Grid.Column="0" 
-                                  Padding="5"
-                                  CornerRadius="8"
-                                  BackgroundColor="{StaticResource Main}">
+                    <Frame Padding="12"
+                          CornerRadius="10"
+                          BackgroundColor="{StaticResource Sections}"
+                          HasShadow="True">
+                        
+                        <Grid RowDefinitions="Auto,120,Auto,Auto,Auto" RowSpacing="8">
+                            
+                            <!-- Constellation Name -->
+                            <Label Grid.Row="0"
+                                  Text="{Binding Name}"
+                                  FontSize="14"
+                                  FontAttributes="Bold"
+                                  HorizontalTextAlignment="Center"
+                                  LineBreakMode="TailTruncation"/>
+                            
+                            <!-- Image Container -->
+                            <Border Grid.Row="1"
+                                   StrokeThickness="0"
+                                   BackgroundColor="{StaticResource Main}"
+                                   Padding="5">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8"/>
+                                </Border.StrokeShape>
                                 <Image Source="{Binding ImageUrl}"
-                                      Aspect="AspectFit"
-                                      HeightRequest="60"
-                                      WidthRequest="60"/>
-                            </Frame>
-
-                            <!-- Constellation Info -->
-                            <VerticalStackLayout Grid.Column="1" Spacing="5">
-                                <Label Text="{Binding Name}" 
-                                      FontSize="18" 
-                                      FontAttributes="Bold"/>
-
-                                <Label FontSize="12" TextColor="{StaticResource OrbitGray}">
+                                      Aspect="AspectFit"/>
+                            </Border>
+                            
+                            <!-- Description (2 lines max) -->
+                            <Label Grid.Row="2"
+                                  Text="{Binding Description}"
+                                  FontSize="11"
+                                  TextColor="{StaticResource OrbitGray}"
+                                  LineBreakMode="TailTruncation"
+                                  MaxLines="2"
+                                  HeightRequest="32"/>
+                            
+                            <!-- Divider Line -->
+                            <BoxView Grid.Row="3"
+                                    HeightRequest="1"
+                                    Color="{StaticResource Button}"
+                                    Margin="0,4"/>
+                            
+                            <!-- Bottom: Star info and Favorite -->
+                            <Grid Grid.Row="4" ColumnDefinitions="*,Auto">
+                                <!-- Brightest Star -->
+                                <Label Grid.Column="0"
+                                      FontSize="10"
+                                      TextColor="{StaticResource OrbitGray}"
+                                      VerticalOptions="Center"
+                                      LineBreakMode="TailTruncation">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="⭐ "/>
                                             <Span Text="{Binding BrightestStar}"/>
-                                            <Span Text=" • "/>
-                                            <Span Text="{Binding NumberOfStars}"/>
-                                            <Span Text=" stars"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-
-                                <Label FontSize="12" TextColor="{StaticResource OrbitGray}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="🌍 "/>
-                                            <Span Text="{Binding Hemisphere}"/>
-                                            <Span Text=" • 📅 "/>
-                                            <Span Text="{Binding BestVisibleMonth}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                                <Label Text="{Binding Description}" 
-                                      FontSize="13" 
-                                      TextColor="{StaticResource OrbitGray}"
-                                      LineBreakMode="TailTruncation"
-                                      MaxLines="2"/>
-                            </VerticalStackLayout>
-
-                            <!-- Favorite Button -->
-                            <Button Grid.Column="2"
-                                   Text="{Binding IsFavorite, Converter={StaticResource FavoriteIconConverter}}"
-                                   FontSize="24"
-                                   BackgroundColor="Transparent"
-                                   Clicked="OnFavoriteClicked"
-                                   CommandParameter="{Binding Id}"
-                                   WidthRequest="50"
-                                   HeightRequest="50"/>
+                                
+                                <!-- Favorite Button -->
+                                <Button Grid.Column="1"
+                                       FontSize="20"
+                                       BackgroundColor="Transparent"
+                                       Clicked="OnFavoriteClicked"
+                                       CommandParameter="{Binding Id}"
+                                       Padding="0"
+                                       Margin="-10,0,0,0"
+                                       WidthRequest="35"
+                                       HeightRequest="35">
+                                    <Button.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding IsFavorite}" Value="True">
+                                            <Setter Property="Text" Value="⭐"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Button" Binding="{Binding IsFavorite}" Value="False">
+                                            <Setter Property="Text" Value="☆"/>
+                                        </DataTrigger>
+                                    </Button.Triggers>
+                                </Button>
+                            </Grid>
+                            
                         </Grid>
                     </Frame>
                 </DataTemplate>
