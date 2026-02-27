@@ -7,6 +7,9 @@ namespace StargazingApp.Models;
 /// </summary>
 public class ConstellationData
 {
+    [JsonProperty("Version")]
+    public int Version { get; set; }
+
     [JsonProperty("constellations")]
     public List<ConstellationJson> Constellations { get; set; } = new List<ConstellationJson>();
 }

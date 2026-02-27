@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite;
 
 namespace StargazingApp.Models;
 

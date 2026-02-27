@@ -1,116 +1,125 @@
-﻿using SQLite;
+﻿using Newtonsoft.Json;
+using SQLite;
 using StargazingApp.Models;
-using Newtonsoft.Json;
 
 public class DatabaseService
 {
-    
     private SQLiteAsyncConnection _database;
+
     // This runs once and sets everything up
     private async Task Init()
     {
         if (_database is not null) return; // if already set up, do nothing
 
         // Find where to save the file on the device
-        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3");
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3"); 
 
-        // Open (or create) the database file
-        _database = new SQLiteAsyncConnection(dbPath);
+        _database = new SQLiteAsyncConnection(dbPath); 
 
         // Create the Constellations table if it doesn't exist
-        await _database.CreateTableAsync<Constellation>();
+        await _database.CreateTableAsync<Constellation>(); 
 
-        // Seed initial data if the table is empty
-        if (await _database.Table<Constellation>().CountAsync() == 0)
-        {
-            await SeedConstellationsFromJson();
-        }
+        // This handles the automatic update check every time the app starts
+        await RefreshDatabaseIfChanged();
     }
 
-    /// <summary>
-    /// Seeds the database with constellation data from the JSON file
-    /// </summary>
-    private async Task SeedConstellationsFromJson()
+    private async Task RefreshDatabaseIfChanged()
     {
         try
         {
-            // Open the JSON file from Resources/Raw
-            using var stream = await FileSystem.OpenAppPackageFileAsync("constellations.json");
-            using var reader = new StreamReader(stream);
-            var json = await reader.ReadToEndAsync();
-
-            // Deserialize the JSON
+            using var stream = await FileSystem.OpenAppPackageFileAsync("constellations.json"); 
+            using var reader = new StreamReader(stream); 
+            var json = await reader.ReadToEndAsync(); 
             var data = JsonConvert.DeserializeObject<ConstellationData>(json);
 
-            if (data?.Constellations != null)
+            if (data?.Constellations == null) return; 
+
+            // Get the version currently saved on the device (default to 0 if new install)
+            int currentDbVersion = Preferences.Default.Get("database_version", 0);
+            var dbCount = await _database.Table<Constellation>().CountAsync(); 
+
+            // Trigger update if version is higher OR if count is different
+            if (data.Version > currentDbVersion || dbCount != data.Constellations.Count)
             {
-                // Convert JSON objects to database models
+                // Remember which constellations were favorites
+                var existingFavorites = await _database.Table<Constellation>()
+                                                 .Where(c => c.IsFavorite)
+                                                 .ToListAsync(); 
+                var favoriteNames = existingFavorites.Select(f => f.Name).ToList();
+
+                // Clear and rebuild the table
+                await _database.DeleteAllAsync<Constellation>();
+
                 var constellations = data.Constellations.Select(c => new Constellation
                 {
-                    Name = c.Name,
-                    Abbreviation = c.Abbreviation,
-                    Description = c.Description,
-                    BestVisibleMonth = c.BestVisibleMonth,
-                    Hemisphere = c.Hemisphere,
-                    VisibleLatitude = c.VisibleLatitude,
-                    BrightestStar = c.BrightestStar,
-                    NumberOfStars = c.NumberOfStars,
-                    Area = c.Area,
-                    // Use local packaged images in Resources/Images/Constellations by name
-                    ImageUrl = $"Constellations/{c.Name.Replace(" ", "")}.png",
-                    IsFavorite = false
+                    Name = c.Name, 
+                    Abbreviation = c.Abbreviation, 
+                    Description = c.Description, 
+                    BestVisibleMonth = c.BestVisibleMonth, 
+                    Hemisphere = c.Hemisphere, 
+                    VisibleLatitude = c.VisibleLatitude, 
+                    BrightestStar = c.BrightestStar, 
+                    NumberOfStars = c.NumberOfStars, 
+                    Area = c.Area, 
+                    ImageUrl = $"Resources/Images/Constellations/{c.Name.Replace(" ", "")}.png", 
+                    // 3. Restore favorite status if it was previously favorited
+                    IsFavorite = favoriteNames.Contains(c.Name)
                 }).ToList();
-                // Insert all into database
-                await _database.InsertAllAsync(constellations);
-                System.Diagnostics.Debug.WriteLine($"Successfully seeded {constellations.Count} constellations!");
+
+                await _database.InsertAllAsync(constellations); 
+
+                // Save the new version number to Preferences
+                Preferences.Default.Set("database_version", data.Version);
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error seeding constellations: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Update error: {ex.Message}"); 
         }
     }
 
-    /// <summary>
-    /// Get all constellations
-    /// </summary>
+    // Filter & Search Methods
+
     public async Task<List<Constellation>> GetConstellationsAsync()
     {
-        await Init();
-        return await _database.Table<Constellation>().ToListAsync();
+        await Init(); 
+        return await _database.Table<Constellation>().ToListAsync(); 
     }
 
-    /// <summary>
-    /// Search constellations by name
-    /// </summary>
     public async Task<List<Constellation>> SearchConstellationsAsync(string searchTerm)
     {
-        await Init();
+        await Init(); 
         return await _database.Table<Constellation>()
-            .Where(c => c.Name.Contains(searchTerm))
-            .ToListAsync();
+            .Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()))
+            .ToListAsync(); 
     }
 
-    /// <summary>
-    /// Filter constellations by hemisphere
-    /// </summary>
     public async Task<List<Constellation>> GetConstellationsByHemisphereAsync(string hemisphere)
     {
-        await Init();
+        await Init(); 
         return await _database.Table<Constellation>()
-            .Where(c => c.Hemisphere == hemisphere || c.Hemisphere == "Both")
-            .ToListAsync();
+            .Where(c => c.Hemisphere == hemisphere || c.Hemisphere == "Both") 
+            .ToListAsync(); 
     }
 
-    /// <summary>
-    /// Get all favorite constellations
-    /// </summary>
     public async Task<List<Constellation>> GetFavoriteConstellationsAsync()
     {
-        await Init();
+        await Init(); 
         return await _database.Table<Constellation>()
-            .Where(c => c.IsFavorite)
-            .ToListAsync();
+            .Where(c => c.IsFavorite) 
+            .ToListAsync(); 
     }
 
+    public async Task ToggleFavoriteAsync(int constellationId)
+    {
+        await Init(); 
+        var constellation = await _database.Table<Constellation>()
+            .FirstOrDefaultAsync(c => c.Id == constellationId); 
+
+        if (constellation != null)
+        {
+            constellation.IsFavorite = !constellation.IsFavorite; 
+            await _database.UpdateAsync(constellation); 
+        }
+    }
 }
