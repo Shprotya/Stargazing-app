@@ -10,7 +10,7 @@
       "brightestStar": "Alpheratz",
       "numberOfStars": 16,
       "area": 722,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Andromeda_IAU.svg/300px-Andromeda_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Andromeda_constellation_map-fr.png"
     },
     {
       "name": "Antlia",
@@ -22,7 +22,7 @@
       "brightestStar": "Alpha Antliae",
       "numberOfStars": 4,
       "area": 239,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Antlia_IAU.svg/300px-Antlia_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Constellation_Antlia.jpg"
     },
     {
       "name": "Apus",
@@ -34,7 +34,7 @@
       "brightestStar": "Alpha Apodis",
       "numberOfStars": 5,
       "area": 206,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Apus_IAU.svg/300px-Apus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Apus_IAU.svg/512px-Apus_IAU.svg.png"
     },
     {
       "name": "Aquarius",
@@ -46,7 +46,7 @@
       "brightestStar": "Sadalsuud",
       "numberOfStars": 22,
       "area": 980,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aquarius_IAU.svg/300px-Aquarius_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aquarius_IAU.svg/512px-Aquarius_IAU.svg.png"
     },
     {
       "name": "Aquila",
@@ -58,7 +58,7 @@
       "brightestStar": "Altair",
       "numberOfStars": 10,
       "area": 652,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Aquila_IAU.svg/300px-Aquila_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Aquila_IAU.svg/512px-Aquila_IAU.svg.png"
     },
     {
       "name": "Ara",
@@ -70,7 +70,7 @@
       "brightestStar": "Beta Arae",
       "numberOfStars": 8,
       "area": 237,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Ara_IAU.svg/300px-Ara_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Ara_IAU.svg/512px-Ara_IAU.svg.png"
     },
     {
       "name": "Aries",
@@ -82,7 +82,7 @@
       "brightestStar": "Hamal",
       "numberOfStars": 9,
       "area": 441,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aries_IAU.svg/300px-Aries_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aries_IAU.svg/512px-Aries_IAU.svg.png"
     },
     {
       "name": "Auriga",
@@ -94,7 +94,7 @@
       "brightestStar": "Capella",
       "numberOfStars": 8,
       "area": 657,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Auriga_IAU.svg/300px-Auriga_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Auriga_IAU.svg/512px-Auriga_IAU.svg.png"
     },
     {
       "name": "Boötes",
@@ -106,7 +106,7 @@
       "brightestStar": "Arcturus",
       "numberOfStars": 13,
       "area": 907,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Bootes_IAU.svg/300px-Bootes_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Bootes_IAU.svg/512px-Bootes_IAU.svg.png"
     },
     {
       "name": "Caelum",
@@ -118,7 +118,7 @@
       "brightestStar": "Alpha Caeli",
       "numberOfStars": 4,
       "area": 125,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Caelum_IAU.svg/300px-Caelum_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Caelum_IAU.svg/512px-Caelum_IAU.svg.png"
     },
     {
       "name": "Camelopardalis",
@@ -130,7 +130,7 @@
       "brightestStar": "Beta Camelopardalis",
       "numberOfStars": 8,
       "area": 757,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Camelopardalis_IAU.svg/300px-Camelopardalis_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Camelopardalis_IAU.svg/512px-Camelopardalis_IAU.svg.png"
     },
     {
       "name": "Cancer",
@@ -142,7 +142,7 @@
       "brightestStar": "Tarf",
       "numberOfStars": 9,
       "area": 506,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Cancer_IAU.svg/300px-Cancer_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Cancer_IAU.svg/512px-Cancer_IAU.svg.png"
     },
     {
       "name": "Canes Venatici",
@@ -154,7 +154,7 @@
       "brightestStar": "Cor Caroli",
       "numberOfStars": 5,
       "area": 465,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Canes_Venatici_IAU.svg/300px-Canes_Venatici_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Canes_Venatici_IAU.svg/512px-Canes_Venatici_IAU.svg.png"
     },
     {
       "name": "Canis Major",
@@ -166,7 +166,7 @@
       "brightestStar": "Sirius",
       "numberOfStars": 11,
       "area": 380,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Canis_Major_IAU.svg/300px-Canis_Major_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Canis_Major_IAU.svg/512px-Canis_Major_IAU.svg.png"
     },
     {
       "name": "Canis Minor",
@@ -178,7 +178,7 @@
       "brightestStar": "Procyon",
       "numberOfStars": 4,
       "area": 183,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Canis_Minor_IAU.svg/300px-Canis_Minor_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Canis_Minor_IAU.svg/512px-Canis_Minor_IAU.svg.png"
     },
     {
       "name": "Capricornus",
@@ -190,7 +190,7 @@
       "brightestStar": "Deneb Algedi",
       "numberOfStars": 9,
       "area": 414,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Capricornus_IAU.svg/300px-Capricornus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Capricornus_IAU.svg/512px-Capricornus_IAU.svg.png"
     },
     {
       "name": "Carina",
@@ -202,7 +202,7 @@
       "brightestStar": "Canopus",
       "numberOfStars": 11,
       "area": 494,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Carina_IAU.svg/300px-Carina_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Carina_IAU.svg/512px-Carina_IAU.svg.png"
     },
     {
       "name": "Cassiopeia",
@@ -214,7 +214,7 @@
       "brightestStar": "Schedar",
       "numberOfStars": 9,
       "area": 598,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cassiopeia_IAU.svg/300px-Cassiopeia_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cassiopeia_IAU.svg/512px-Cassiopeia_IAU.svg.png"
     },
     {
       "name": "Centaurus",
@@ -226,7 +226,7 @@
       "brightestStar": "Alpha Centauri",
       "numberOfStars": 20,
       "area": 1060,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Centaurus_IAU.svg/300px-Centaurus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Centaurus_IAU.svg/512px-Centaurus_IAU.svg.png"
     },
     {
       "name": "Cepheus",
@@ -238,7 +238,7 @@
       "brightestStar": "Alderamin",
       "numberOfStars": 10,
       "area": 588,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cepheus_IAU.svg/300px-Cepheus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cepheus_IAU.svg/512px-Cepheus_IAU.svg.png"
     },
     {
       "name": "Cetus",
@@ -250,7 +250,7 @@
       "brightestStar": "Diphda",
       "numberOfStars": 14,
       "area": 1231,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cetus_IAU.svg/300px-Cetus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cetus_IAU.svg/512px-Cetus_IAU.svg.png"
     },
     {
       "name": "Chamaeleon",
@@ -262,7 +262,7 @@
       "brightestStar": "Alpha Chamaeleontis",
       "numberOfStars": 4,
       "area": 132,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Chamaeleon_IAU.svg/300px-Chamaeleon_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Chamaeleon_IAU.svg/512px-Chamaeleon_IAU.svg.png"
     },
     {
       "name": "Circinus",
@@ -274,7 +274,7 @@
       "brightestStar": "Alpha Circini",
       "numberOfStars": 4,
       "area": 93,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Circinus_IAU.svg/300px-Circinus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Circinus_IAU.svg/512px-Circinus_IAU.svg.png"
     },
     {
       "name": "Columba",
@@ -286,7 +286,7 @@
       "brightestStar": "Phact",
       "numberOfStars": 5,
       "area": 270,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Columba_IAU.svg/300px-Columba_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Columba_IAU.svg/512px-Columba_IAU.svg.png"
     },
     {
       "name": "Coma Berenices",
@@ -298,7 +298,7 @@
       "brightestStar": "Beta Comae Berenices",
       "numberOfStars": 5,
       "area": 386,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Coma_Berenices_IAU.svg/300px-Coma_Berenices_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Coma_Berenices_IAU.svg/512px-Coma_Berenices_IAU.svg.png"
     },
     {
       "name": "Corona Australis",
@@ -310,7 +310,7 @@
       "brightestStar": "Alphekka Meridiana",
       "numberOfStars": 6,
       "area": 128,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Corona_Australis_IAU.svg/300px-Corona_Australis_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Corona_Australis_IAU.svg/512px-Corona_Australis_IAU.svg.png"
     },
     {
       "name": "Corona Borealis",
@@ -322,7 +322,7 @@
       "brightestStar": "Alphekka",
       "numberOfStars": 7,
       "area": 179,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Corona_Borealis_IAU.svg/300px-Corona_Borealis_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Corona_Borealis_IAU.svg/512px-Corona_Borealis_IAU.svg.png"
     },
     {
       "name": "Corvus",
@@ -334,7 +334,7 @@
       "brightestStar": "Gienah",
       "numberOfStars": 7,
       "area": 184,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Corvus_IAU.svg/300px-Corvus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Corvus_IAU.svg/512px-Corvus_IAU.svg.png"
     },
     {
       "name": "Crater",
@@ -346,7 +346,7 @@
       "brightestStar": "Delta Crateris",
       "numberOfStars": 7,
       "area": 282,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Crater_IAU.svg/300px-Crater_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Crater_IAU.svg/512px-Crater_IAU.svg.png"
     },
     {
       "name": "Crux",
@@ -358,7 +358,7 @@
       "brightestStar": "Acrux",
       "numberOfStars": 5,
       "area": 68,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Crux_IAU.svg/300px-Crux_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Crux_IAU.svg/512px-Crux_IAU.svg.png"
     },
     {
       "name": "Cygnus",
@@ -370,7 +370,7 @@
       "brightestStar": "Deneb",
       "numberOfStars": 10,
       "area": 804,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Cygnus_IAU.svg/300px-Cygnus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Cygnus_IAU.svg/512px-Cygnus_IAU.svg.png"
     },
     {
       "name": "Delphinus",
@@ -382,7 +382,7 @@
       "brightestStar": "Rotanev",
       "numberOfStars": 5,
       "area": 189,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Delphinus_IAU.svg/300px-Delphinus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Delphinus_IAU.svg/512px-Delphinus_IAU.svg.png"
     },
     {
       "name": "Dorado",
@@ -394,7 +394,7 @@
       "brightestStar": "Alpha Doradus",
       "numberOfStars": 5,
       "area": 179,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dorado_IAU.svg/300px-Dorado_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dorado_IAU.svg/512px-Dorado_IAU.svg.png"
     },
     {
       "name": "Draco",
@@ -406,7 +406,7 @@
       "brightestStar": "Eltanin",
       "numberOfStars": 14,
       "area": 1083,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Draco_IAU.svg/300px-Draco_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Draco_IAU.svg/512px-Draco_IAU.svg.png"
     },
     {
       "name": "Equuleus",
@@ -418,7 +418,7 @@
       "brightestStar": "Kitalpha",
       "numberOfStars": 3,
       "area": 72,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Equuleus_IAU.svg/300px-Equuleus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Equuleus_IAU.svg/512px-Equuleus_IAU.svg.png"
     },
     {
       "name": "Eridanus",
@@ -430,7 +430,7 @@
       "brightestStar": "Achernar",
       "numberOfStars": 17,
       "area": 1138,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Eridanus_IAU.svg/300px-Eridanus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Eridanus_IAU.svg/512px-Eridanus_IAU.svg.png"
     },
     {
       "name": "Fornax",
@@ -442,7 +442,7 @@
       "brightestStar": "Dalim",
       "numberOfStars": 6,
       "area": 398,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Fornax_IAU.svg/300px-Fornax_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Fornax_IAU.svg/512px-Fornax_IAU.svg.png"
     },
     {
       "name": "Gemini",
@@ -454,7 +454,7 @@
       "brightestStar": "Pollux",
       "numberOfStars": 12,
       "area": 514,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Gemini_IAU.svg/300px-Gemini_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Gemini_IAU.svg/512px-Gemini_IAU.svg.png"
     },
     {
       "name": "Grus",
@@ -466,7 +466,7 @@
       "brightestStar": "Alnair",
       "numberOfStars": 8,
       "area": 366,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Grus_IAU.svg/300px-Grus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Grus_IAU.svg/512px-Grus_IAU.svg.png"
     },
     {
       "name": "Hercules",
@@ -478,7 +478,7 @@
       "brightestStar": "Kornephoros",
       "numberOfStars": 14,
       "area": 1225,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Hercules_IAU.svg/300px-Hercules_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Hercules_IAU.svg/512px-Hercules_IAU.svg.png"
     },
     {
       "name": "Horologium",
@@ -490,7 +490,7 @@
       "brightestStar": "Alpha Horologii",
       "numberOfStars": 4,
       "area": 249,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Horologium_IAU.svg/300px-Horologium_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Horologium_IAU.svg/512px-Horologium_IAU.svg.png"
     },
     {
       "name": "Hydra",
@@ -502,7 +502,7 @@
       "brightestStar": "Alphard",
       "numberOfStars": 17,
       "area": 1303,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Hydra_IAU.svg/300px-Hydra_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Hydra_IAU.svg/512px-Hydra_IAU.svg.png"
     },
     {
       "name": "Hydrus",
@@ -514,7 +514,7 @@
       "brightestStar": "Beta Hydri",
       "numberOfStars": 5,
       "area": 243,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hydrus_IAU.svg/300px-Hydrus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hydrus_IAU.svg/512px-Hydrus_IAU.svg.png"
     },
     {
       "name": "Indus",
@@ -526,7 +526,7 @@
       "brightestStar": "The Persian",
       "numberOfStars": 5,
       "area": 294,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Indus_IAU.svg/300px-Indus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Indus_IAU.svg/512px-Indus_IAU.svg.png"
     },
     {
       "name": "Lacerta",
@@ -538,7 +538,7 @@
       "brightestStar": "Alpha Lacertae",
       "numberOfStars": 5,
       "area": 201,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lacerta_IAU.svg/300px-Lacerta_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lacerta_IAU.svg/512px-Lacerta_IAU.svg.png"
     },
     {
       "name": "Leo",
@@ -550,7 +550,7 @@
       "brightestStar": "Regulus",
       "numberOfStars": 12,
       "area": 947,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Leo_IAU.svg/300px-Leo_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Leo_IAU.svg/512px-Leo_IAU.svg.png"
     },
     {
       "name": "Leo Minor",
@@ -562,7 +562,7 @@
       "brightestStar": "Praecipua",
       "numberOfStars": 4,
       "area": 232,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leo_Minor_IAU.svg/300px-Leo_Minor_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leo_Minor_IAU.svg/512px-Leo_Minor_IAU.svg.png"
     },
     {
       "name": "Lepus",
@@ -574,7 +574,7 @@
       "brightestStar": "Arneb",
       "numberOfStars": 8,
       "area": 290,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Lepus_IAU.svg/300px-Lepus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Lepus_IAU.svg/512px-Lepus_IAU.svg.png"
     },
     {
       "name": "Libra",
@@ -586,7 +586,7 @@
       "brightestStar": "Zubeneschamali",
       "numberOfStars": 6,
       "area": 538,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Libra_IAU.svg/300px-Libra_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Libra_IAU.svg/512px-Libra_IAU.svg.png"
     },
     {
       "name": "Lupus",
@@ -598,7 +598,7 @@
       "brightestStar": "Alpha Lupi",
       "numberOfStars": 9,
       "area": 334,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Lupus_IAU.svg/300px-Lupus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Lupus_IAU.svg/512px-Lupus_IAU.svg.png"
     },
     {
       "name": "Lynx",
@@ -610,7 +610,7 @@
       "brightestStar": "Alpha Lyncis",
       "numberOfStars": 5,
       "area": 545,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Lynx_IAU.svg/300px-Lynx_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Lynx_IAU.svg/512px-Lynx_IAU.svg.png"
     },
     {
       "name": "Lyra",
@@ -622,7 +622,7 @@
       "brightestStar": "Vega",
       "numberOfStars": 5,
       "area": 286,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lyra_IAU.svg/300px-Lyra_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lyra_IAU.svg/512px-Lyra_IAU.svg.png"
     },
     {
       "name": "Mensa",
@@ -634,7 +634,7 @@
       "brightestStar": "Alpha Mensae",
       "numberOfStars": 3,
       "area": 153,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mensa_IAU.svg/300px-Mensa_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mensa_IAU.svg/512px-Mensa_IAU.svg.png"
     },
     {
       "name": "Microscopium",
@@ -646,7 +646,7 @@
       "brightestStar": "Gamma Microscopii",
       "numberOfStars": 5,
       "area": 210,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Microscopium_IAU.svg/300px-Microscopium_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Microscopium_IAU.svg/512px-Microscopium_IAU.svg.png"
     },
     {
       "name": "Monoceros",
@@ -658,7 +658,7 @@
       "brightestStar": "Beta Monocerotis",
       "numberOfStars": 8,
       "area": 482,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Monoceros_IAU.svg/300px-Monoceros_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Monoceros_IAU.svg/512px-Monoceros_IAU.svg.png"
     },
     {
       "name": "Musca",
@@ -670,7 +670,7 @@
       "brightestStar": "Alpha Muscae",
       "numberOfStars": 5,
       "area": 138,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Musca_IAU.svg/300px-Musca_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Musca_IAU.svg/512px-Musca_IAU.svg.png"
     },
     {
       "name": "Norma",
@@ -682,7 +682,7 @@
       "brightestStar": "Gamma Normae",
       "numberOfStars": 5,
       "area": 165,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Norma_IAU.svg/300px-Norma_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Norma_IAU.svg/512px-Norma_IAU.svg.png"
     },
     {
       "name": "Octans",
@@ -694,7 +694,7 @@
       "brightestStar": "Nu Octantis",
       "numberOfStars": 5,
       "area": 291,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Octans_IAU.svg/300px-Octans_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Octans_IAU.svg/512px-Octans_IAU.svg.png"
     },
     {
       "name": "Ophiuchus",
@@ -706,7 +706,7 @@
       "brightestStar": "Rasalhague",
       "numberOfStars": 11,
       "area": 948,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ophiuchus_IAU.svg/300px-Ophiuchus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ophiuchus_IAU.svg/512px-Ophiuchus_IAU.svg.png"
     },
     {
       "name": "Orion",
@@ -718,7 +718,7 @@
       "brightestStar": "Rigel",
       "numberOfStars": 10,
       "area": 594,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Orion_IAU.svg/300px-Orion_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Orion_IAU.svg/512px-Orion_IAU.svg.png"
     },
     {
       "name": "Pavo",
@@ -730,7 +730,7 @@
       "brightestStar": "Peacock",
       "numberOfStars": 7,
       "area": 378,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Pavo_IAU.svg/300px-Pavo_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Pavo_IAU.svg/512px-Pavo_IAU.svg.png"
     },
     {
       "name": "Pegasus",
@@ -742,7 +742,7 @@
       "brightestStar": "Enif",
       "numberOfStars": 12,
       "area": 1121,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pegasus_IAU.svg/300px-Pegasus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pegasus_IAU.svg/512px-Pegasus_IAU.svg.png"
     },
     {
       "name": "Perseus",
@@ -754,7 +754,7 @@
       "brightestStar": "Mirfak",
       "numberOfStars": 10,
       "area": 615,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Perseus_IAU.svg/300px-Perseus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Perseus_IAU.svg/512px-Perseus_IAU.svg.png"
     },
     {
       "name": "Phoenix",
@@ -766,7 +766,7 @@
       "brightestStar": "Ankaa",
       "numberOfStars": 8,
       "area": 469,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Phoenix_IAU.svg/300px-Phoenix_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Phoenix_IAU.svg/512px-Phoenix_IAU.svg.png"
     },
     {
       "name": "Pictor",
@@ -778,7 +778,7 @@
       "brightestStar": "Alpha Pictoris",
       "numberOfStars": 4,
       "area": 247,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pictor_IAU.svg/300px-Pictor_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pictor_IAU.svg/512px-Pictor_IAU.svg.png"
     },
     {
       "name": "Pisces",
@@ -790,7 +790,7 @@
       "brightestStar": "Eta Piscium",
       "numberOfStars": 13,
       "area": 889,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Pisces_IAU.svg/300px-Pisces_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Pisces_IAU.svg/512px-Pisces_IAU.svg.png"
     },
     {
       "name": "Piscis Austrinus",
@@ -802,7 +802,7 @@
       "brightestStar": "Fomalhaut",
       "numberOfStars": 7,
       "area": 245,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Piscis_Austrinus_IAU.svg/300px-Piscis_Austrinus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Piscis_Austrinus_IAU.svg/512px-Piscis_Austrinus_IAU.svg.png"
     },
     {
       "name": "Puppis",
@@ -814,7 +814,7 @@
       "brightestStar": "Naos",
       "numberOfStars": 9,
       "area": 673,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Puppis_IAU.svg/300px-Puppis_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Puppis_IAU.svg/512px-Puppis_IAU.svg.png"
     },
     {
       "name": "Pyxis",
@@ -826,7 +826,7 @@
       "brightestStar": "Alpha Pyxidis",
       "numberOfStars": 5,
       "area": 221,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Pyxis_IAU.svg/300px-Pyxis_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Pyxis_IAU.svg/512px-Pyxis_IAU.svg.png"
     },
     {
       "name": "Reticulum",
@@ -838,7 +838,7 @@
       "brightestStar": "Alpha Reticuli",
       "numberOfStars": 5,
       "area": 114,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Reticulum_IAU.svg/300px-Reticulum_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Reticulum_IAU.svg/512px-Reticulum_IAU.svg.png"
     },
     {
       "name": "Sagitta",
@@ -850,7 +850,7 @@
       "brightestStar": "Gamma Sagittae",
       "numberOfStars": 4,
       "area": 80,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Sagitta_IAU.svg/300px-Sagitta_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Sagitta_IAU.svg/512px-Sagitta_IAU.svg.png"
     },
     {
       "name": "Sagittarius",
@@ -862,7 +862,7 @@
       "brightestStar": "Kaus Australis",
       "numberOfStars": 15,
       "area": 867,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Sagittarius_IAU.svg/300px-Sagittarius_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Sagittarius_IAU.svg/512px-Sagittarius_IAU.svg.png"
     },
     {
       "name": "Scorpius",
@@ -874,7 +874,7 @@
       "brightestStar": "Antares",
       "numberOfStars": 15,
       "area": 497,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Scorpius_IAU.svg/300px-Scorpius_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Scorpius_IAU.svg/512px-Scorpius_IAU.svg.png"
     },
     {
       "name": "Sculptor",
@@ -886,7 +886,7 @@
       "brightestStar": "Alpha Sculptoris",
       "numberOfStars": 6,
       "area": 475,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sculptor_IAU.svg/300px-Sculptor_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sculptor_IAU.svg/512px-Sculptor_IAU.svg.png"
     },
     {
       "name": "Scutum",
@@ -898,7 +898,7 @@
       "brightestStar": "Alpha Scuti",
       "numberOfStars": 4,
       "area": 109,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Scutum_IAU.svg/300px-Scutum_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Scutum_IAU.svg/512px-Scutum_IAU.svg.png"
     },
     {
       "name": "Serpens",
@@ -910,7 +910,7 @@
       "brightestStar": "Unukalhai",
       "numberOfStars": 11,
       "area": 637,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Serpens_IAU.svg/300px-Serpens_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Serpens_IAU.svg/512px-Serpens_IAU.svg.png"
     },
     {
       "name": "Sextans",
@@ -922,7 +922,7 @@
       "brightestStar": "Alpha Sextantis",
       "numberOfStars": 5,
       "area": 314,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Sextans_IAU.svg/300px-Sextans_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Sextans_IAU.svg/512px-Sextans_IAU.svg.png"
     },
     {
       "name": "Taurus",
@@ -934,7 +934,7 @@
       "brightestStar": "Aldebaran",
       "numberOfStars": 14,
       "area": 797,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Taurus_IAU.svg/300px-Taurus_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Taurus_IAU.svg/512px-Taurus_IAU.svg.png"
     },
     {
       "name": "Telescopium",
@@ -946,7 +946,7 @@
       "brightestStar": "Alpha Telescopii",
       "numberOfStars": 5,
       "area": 252,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Telescopium_IAU.svg/300px-Telescopium_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Telescopium_IAU.svg/512px-Telescopium_IAU.svg.png"
     },
     {
       "name": "Triangulum",
@@ -958,7 +958,7 @@
       "brightestStar": "Beta Trianguli",
       "numberOfStars": 4,
       "area": 132,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Triangulum_IAU.svg/300px-Triangulum_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Triangulum_IAU.svg/512px-Triangulum_IAU.svg.png"
     },
     {
       "name": "Triangulum Australe",
@@ -970,7 +970,7 @@
       "brightestStar": "Atria",
       "numberOfStars": 5,
       "area": 110,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Triangulum_Australe_IAU.svg/300px-Triangulum_Australe_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Triangulum_Australe_IAU.svg/512px-Triangulum_Australe_IAU.svg.png"
     },
     {
       "name": "Tucana",
@@ -982,7 +982,7 @@
       "brightestStar": "Alpha Tucanae",
       "numberOfStars": 6,
       "area": 295,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Tucana_IAU.svg/300px-Tucana_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Tucana_IAU.svg/512px-Tucana_IAU.svg.png"
     },
     {
       "name": "Ursa Major",
@@ -994,7 +994,7 @@
       "brightestStar": "Alioth",
       "numberOfStars": 20,
       "area": 1280,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ursa_Major_IAU.svg/300px-Ursa_Major_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ursa_Major_IAU.svg/512px-Ursa_Major_IAU.svg.png"
     },
     {
       "name": "Ursa Minor",
@@ -1006,7 +1006,7 @@
       "brightestStar": "Polaris",
       "numberOfStars": 7,
       "area": 256,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Ursa_Minor_IAU.svg/300px-Ursa_Minor_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Ursa_Minor_IAU.svg/512px-Ursa_Minor_IAU.svg.png"
     },
     {
       "name": "Vela",
@@ -1018,7 +1018,7 @@
       "brightestStar": "Gamma Velorum",
       "numberOfStars": 11,
       "area": 500,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Vela_IAU.svg/300px-Vela_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Vela_IAU.svg/512px-Vela_IAU.svg.png"
     },
     {
       "name": "Virgo",
@@ -1030,7 +1030,7 @@
       "brightestStar": "Spica",
       "numberOfStars": 15,
       "area": 1294,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Virgo_IAU.svg/300px-Virgo_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Virgo_IAU.svg/512px-Virgo_IAU.svg.png"
     },
     {
       "name": "Volans",
@@ -1042,7 +1042,7 @@
       "brightestStar": "Beta Volantis",
       "numberOfStars": 5,
       "area": 141,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Volans_IAU.svg/300px-Volans_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Volans_IAU.svg/512px-Volans_IAU.svg.png"
     },
     {
       "name": "Vulpecula",
@@ -1054,7 +1054,7 @@
       "brightestStar": "Anser",
       "numberOfStars": 5,
       "area": 268,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Vulpecula_IAU.svg/300px-Vulpecula_IAU.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Vulpecula_IAU.svg/512px-Vulpecula_IAU.svg.png"
     }
   ]
 }

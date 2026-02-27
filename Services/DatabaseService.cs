@@ -56,7 +56,8 @@ public class DatabaseService
                     BrightestStar = c.BrightestStar,
                     NumberOfStars = c.NumberOfStars,
                     Area = c.Area,
-                    ImageUrl = c.ImageUrl,
+                    // Use local packaged images in Resources/Images/Constellations by name
+                    ImageUrl = $"Resources/Images/Constellations/{c.Name}.png",
                     IsFavorite = false
                 }).ToList();
 
