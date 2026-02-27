@@ -50,10 +50,12 @@ public class DatabaseService
                     Name = c.Name,
                     Abbreviation = c.Abbreviation,
                     Description = c.Description,
+
                     BestVisibleMonth = c.BestVisibleMonth,
                     Hemisphere = c.Hemisphere,
                     VisibleLatitude = c.VisibleLatitude,
                     BrightestStar = c.BrightestStar,
+
                     NumberOfStars = c.NumberOfStars,
                     Area = c.Area,
                     // Use local packaged images in Resources/Images/Constellations by name
