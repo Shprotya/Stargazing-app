@@ -97,7 +97,7 @@
       "imageUrl": "Auriga.png"
     },
     {
-      "name": "Boötes",
+      "name": "Bootes",
       "abbreviation": "Boo",
       "description": "The Herdsman. Contains Arcturus, the fourth brightest star in the night sky.",
       "bestVisibleMonth": "June",
@@ -106,7 +106,7 @@
       "brightestStar": "Arcturus",
       "numberOfStars": 13,
       "area": 907,
-      "imageUrl": "Boötes.png"
+      "imageUrl": "Bootes.png"
     },
     {
       "name": "Caelum",
@@ -154,7 +154,7 @@
       "brightestStar": "Cor Caroli",
       "numberOfStars": 5,
       "area": 465,
-      "imageUrl": "Canes Venatici.png"
+      "imageUrl": "CanesVenatici.png"
     },
     {
       "name": "Canis Major",
@@ -166,7 +166,7 @@
       "brightestStar": "Sirius",
       "numberOfStars": 11,
       "area": 380,
-      "imageUrl": "Canis Major.png"
+      "imageUrl": "CanisMajor.png"
     },
     {
       "name": "Canis Minor",
@@ -178,7 +178,7 @@
       "brightestStar": "Procyon",
       "numberOfStars": 4,
       "area": 183,
-      "imageUrl": "Canis Minor.png"
+      "imageUrl": "CanisMinor.png"
     },
     {
       "name": "Capricornus",
@@ -298,7 +298,7 @@
       "brightestStar": "Beta Comae Berenices",
       "numberOfStars": 5,
       "area": 386,
-      "imageUrl": "Coma Berenices.png"
+      "imageUrl": "ComaBerenices.png"
     },
     {
       "name": "Corona Australis",
@@ -310,7 +310,7 @@
       "brightestStar": "Alphekka Meridiana",
       "numberOfStars": 6,
       "area": 128,
-      "imageUrl": "Corona Australis.png"
+      "imageUrl": "CoronaAustralis.png"
     },
     {
       "name": "Corona Borealis",
@@ -322,7 +322,7 @@
       "brightestStar": "Alphekka",
       "numberOfStars": 7,
       "area": 179,
-      "imageUrl": "Corona Borealis.png"
+      "imageUrl": "CoronaBorealis.png"
     },
     {
       "name": "Corvus",
@@ -562,7 +562,7 @@
       "brightestStar": "Praecipua",
       "numberOfStars": 4,
       "area": 232,
-      "imageUrl": "Leo Minor.png"
+      "imageUrl": "LeoMinor.png"
     },
     {
       "name": "Lepus",
@@ -802,7 +802,7 @@
       "brightestStar": "Fomalhaut",
       "numberOfStars": 7,
       "area": 245,
-      "imageUrl": "Piscis Austrinus.png"
+      "imageUrl": "PiscisAustrinus.png"
     },
     {
       "name": "Puppis",
@@ -901,18 +901,6 @@
       "imageUrl": "Scutum.png"
     },
     {
-      "name": "Serpens",
-      "abbreviation": "Ser",
-      "description": "The Serpent. Unique as it's divided into two parts: Serpens Caput (head) and Serpens Cauda (tail).",
-      "bestVisibleMonth": "July",
-      "hemisphere": "Both",
-      "visibleLatitude": "74°N to 64°S",
-      "brightestStar": "Unukalhai",
-      "numberOfStars": 11,
-      "area": 637,
-      "imageUrl": "Serpens.png"
-    },
-    {
       "name": "Sextans",
       "abbreviation": "Sex",
       "description": "The Sextant. A faint constellation on the celestial equator.",
@@ -970,7 +958,7 @@
       "brightestStar": "Atria",
       "numberOfStars": 5,
       "area": 110,
-      "imageUrl": "Triangulum Australe.png"
+      "imageUrl": "TriangulumAustrale.png"
     },
     {
       "name": "Tucana",
@@ -994,7 +982,7 @@
       "brightestStar": "Alioth",
       "numberOfStars": 20,
       "area": 1280,
-      "imageUrl": "Ursa Major.png"
+      "imageUrl": "UrsaMajor.png"
     },
     {
       "name": "Ursa Minor",

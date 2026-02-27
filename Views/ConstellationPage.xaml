@@ -21,18 +21,22 @@
 
             <!-- Filter Buttons -->
             <HorizontalStackLayout Spacing="10">
-                <Button Text="All" 
-                       Clicked="OnFilterAll"
-                       BackgroundColor="{StaticResource Button}"/>
-                <Button Text="Northern" 
-                       Clicked="OnFilterNorthern"
-                       BackgroundColor="{StaticResource Button}"/>
-                <Button Text="Southern" 
-                       Clicked="OnFilterSouthern"
-                       BackgroundColor="{StaticResource Button}"/>
-                <Button Text="Favorites" 
-                       Clicked="OnFilterFavorites"
-                       BackgroundColor="{StaticResource NovaPurple}"/>
+                <Button x:Name="BtnAll" 
+                        Text="All" 
+                        Clicked="OnFilterAll" 
+                        BackgroundColor="{StaticResource NovaPurple}"/>
+                <Button x:Name="BtnNorth" 
+                        Text="Northern" 
+                        Clicked="OnFilterNorthern" 
+                        BackgroundColor="{StaticResource Button}"/>
+                <Button x:Name="BtnSouth" 
+                        Text="Southern" 
+                        Clicked="OnFilterSouthern" 
+                        BackgroundColor="{StaticResource Button}"/>
+                <Button x:Name="BtnFav" 
+                        Text="Favorites" 
+                        Clicked="OnFilterFavorites" 
+                        BackgroundColor="{StaticResource Button}"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
 

@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 public class DatabaseService
 {
+    
     private SQLiteAsyncConnection _database;
-
     // This runs once and sets everything up
     private async Task Init()
     {
-        if (_database is not null) return; // is already set up, do nothing
+        if (_database is not null) return; // if already set up, do nothing
 
         // Find where to save the file on the device
         var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3");
@@ -50,22 +50,18 @@ public class DatabaseService
                     Name = c.Name,
                     Abbreviation = c.Abbreviation,
                     Description = c.Description,
-
                     BestVisibleMonth = c.BestVisibleMonth,
                     Hemisphere = c.Hemisphere,
                     VisibleLatitude = c.VisibleLatitude,
                     BrightestStar = c.BrightestStar,
-
                     NumberOfStars = c.NumberOfStars,
                     Area = c.Area,
                     // Use local packaged images in Resources/Images/Constellations by name
-                    ImageUrl = $"Resources/Images/Constellations/{c.Name}.png",
+                    ImageUrl = $"Constellations/{c.Name.Replace(" ", "")}.png",
                     IsFavorite = false
                 }).ToList();
-
                 // Insert all into database
                 await _database.InsertAllAsync(constellations);
-
                 System.Diagnostics.Debug.WriteLine($"Successfully seeded {constellations.Count} constellations!");
             }
         }
@@ -107,17 +103,6 @@ public class DatabaseService
     }
 
     /// <summary>
-    /// Filter constellations by best viewing month
-    /// </summary>
-    public async Task<List<Constellation>> GetConstellationsByMonthAsync(string month)
-    {
-        await Init();
-        return await _database.Table<Constellation>()
-            .Where(c => c.BestVisibleMonth == month)
-            .ToListAsync();
-    }
-
-    /// <summary>
     /// Get all favorite constellations
     /// </summary>
     public async Task<List<Constellation>> GetFavoriteConstellationsAsync()
@@ -128,57 +113,4 @@ public class DatabaseService
             .ToListAsync();
     }
 
-    /// <summary>
-    /// Save or update a constellation
-    /// </summary>
-    public async Task SaveConstellationAsync(Constellation item)
-    {
-        await Init();
-
-        if (item.Id != 0)
-        {
-            // Update existing
-            await _database.UpdateAsync(item);
-        }
-        else
-        {
-            // Insert new
-            await _database.InsertAsync(item);
-        }
-    }
-
-    /// <summary>
-    /// Toggle favorite status for a constellation
-    /// </summary>
-    public async Task ToggleFavoriteAsync(int constellationId)
-    {
-        await Init();
-        var constellation = await _database.Table<Constellation>()
-            .Where(c => c.Id == constellationId)
-            .FirstOrDefaultAsync();
-
-        if (constellation != null)
-        {
-            constellation.IsFavorite = !constellation.IsFavorite;
-            await _database.UpdateAsync(constellation);
-        }
-    }
-
-    /// <summary>
-    /// Delete a constellation
-    /// </summary>
-    public async Task DeleteConstellationAsync(Constellation item)
-    {
-        await Init();
-        await _database.DeleteAsync(item);
-    }
-
-    /// <summary>
-    /// Clear all data (useful for testing/debugging)
-    /// </summary>
-    public async Task ClearAllDataAsync()
-    {
-        await Init();
-        await _database.DeleteAllAsync<Constellation>();
-    }
 }
