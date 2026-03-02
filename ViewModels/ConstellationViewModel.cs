@@ -13,19 +13,39 @@ public partial class ConstellationViewModel : ObservableObject
     [ObservableProperty]
     string searchText;
 
+    [ObservableProperty]
+    string activeFilter = "All"; 
+
     public ConstellationViewModel(DatabaseService databaseService)
     {
         _databaseService = databaseService;
     }
 
+
+    [RelayCommand]
     public async Task LoadAllAsync()
     {
+        activeFilter = "All"; // Set state
         var items = await _databaseService.GetConstellationsAsync();
-        Constellations.Clear();
-        foreach (var c in items)
-            Constellations.Add(c);
+        UpdateList(items);
     }
 
+    [RelayCommand]
+    public async Task FilterByHemisphereAsync(string hemisphere)
+    {
+        activeFilter = hemisphere; // Set state (Northern or Southern)
+        var items = await _databaseService.GetConstellationsByHemisphereAsync(hemisphere);
+        UpdateList(items);
+    }
+
+    [RelayCommand]
+    public async Task FilterFavoritesAsync()
+    {
+        var items = await _databaseService.GetFavoriteConstellationsAsync();
+        UpdateList(items);
+    }
+
+    [RelayCommand]
     public async Task SearchAsync(string text)
     {
         if (string.IsNullOrWhiteSpace(text))
@@ -35,44 +55,22 @@ public partial class ConstellationViewModel : ObservableObject
         }
 
         var items = await _databaseService.SearchConstellationsAsync(text);
-        Constellations.Clear();
-        foreach (var c in items)
-            Constellations.Add(c);
+        UpdateList(items);
     }
 
-    public async Task FilterNorthernAsync()
-    {
-        var items = await _databaseService.GetConstellationsAsync();
-        var filtered = items
-            .Where(c => c.Hemisphere == "Northern" || c.Hemisphere == "Both");
-        Constellations.Clear();
-        foreach (var c in filtered)
-            Constellations.Add(c);
-    }
-
-    public async Task FilterSouthernAsync()
-    {
-        var items = await _databaseService.GetConstellationsAsync();
-        var filtered = items
-            .Where(c => c.Hemisphere == "Southern" || c.Hemisphere == "Both");
-        Constellations.Clear();
-        foreach (var c in filtered)
-            Constellations.Add(c);
-    }
-
-    public async Task FilterFavoritesAsync()
-    {
-        var items = await _databaseService.GetFavoriteConstellationsAsync();
-        Constellations.Clear();
-        foreach (var c in items)
-            Constellations.Add(c);
-    }
-
+    [RelayCommand]
     public async Task ToggleFavoriteAsync(int constellationId)
     {
         await _databaseService.ToggleFavoriteAsync(constellationId);
+        // Refresh the current view to show the star change
+        await SearchAsync(SearchText);
+    }
 
-        // Simple: reload all, or you can reload the current filter later
-        await LoadAllAsync();
+    // Helper to avoid repeating Clear/Add logic
+    private void UpdateList(IEnumerable<Constellation> items)
+    {
+        Constellations.Clear();
+        foreach (var c in items)
+            Constellations.Add(c);
     }
 }

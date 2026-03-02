@@ -12,32 +12,30 @@
 
             <!-- Search Bar -->
             <SearchBar x:Name="SearchBar"
-                       Placeholder="Search constellations..."
-                       TextColor="{StaticResource StarWhite}"
-                       PlaceholderColor="{StaticResource OrbitGray}"
-                       BackgroundColor="{StaticResource Sections}"
-                       Text="{Binding SearchText}"
-                       SearchButtonPressed="OnSearchButtonPressed"
-                       TextChanged="OnSearchTextChanged" />
+                Placeholder="Search constellations..."
+                Text="{Binding SearchText}"
+                SearchCommand="{Binding SearchCommand}"
+                SearchCommandParameter="{Binding Text, Source={RelativeSource Self}}" />
 
-            <!-- Filter Buttons -->
+            <!--Filtering buttons-->
             <HorizontalStackLayout Spacing="10">
                 <Button x:Name="BtnAll" 
-                        Text="All" 
-                        Clicked="OnFilterAll" 
-                        BackgroundColor="{StaticResource NovaPurple}" />
+                    Text="All" 
+                    Command="{Binding LoadAllCommand}" />
+
                 <Button x:Name="BtnNorth" 
-                        Text="Northern" 
-                        Clicked="OnFilterNorthern" 
-                        BackgroundColor="{StaticResource Button}" />
+                    Text="Northern" 
+                    Command="{Binding FilterByHemisphereCommand}" 
+                    CommandParameter="Northern" />
+
                 <Button x:Name="BtnSouth" 
-                        Text="Southern" 
-                        Clicked="OnFilterSouthern" 
-                        BackgroundColor="{StaticResource Button}" />
+                    Text="Southern" 
+                    Command="{Binding FilterByHemisphereCommand}" 
+                    CommandParameter="Southern" />
+
                 <Button x:Name="BtnFav" 
-                        Text="Favorites" 
-                        Clicked="OnFilterFavorites" 
-                        BackgroundColor="{StaticResource Button}" />
+                    Text="Favorites" 
+                    Command="{Binding FilterFavoritesCommand}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
@@ -134,7 +132,7 @@
                                 <Button Grid.Column="1"
                                         FontSize="20"
                                         BackgroundColor="Transparent"
-                                        Clicked="OnFavoriteClicked"
+                                        Command="{Binding BindingContext.ToggleFavoriteCommand, Source={x:Reference SearchBar}}"
                                         CommandParameter="{Binding Id}"
                                         Padding="0"
                                         Margin="-10,0,0,0"
@@ -142,13 +140,13 @@
                                         HeightRequest="35">
                                     <Button.Triggers>
                                         <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsFavorite}"
-                                                     Value="True">
+                                                 Binding="{Binding IsFavorite}"
+                                                 Value="True">
                                             <Setter Property="Text" Value="⭐" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsFavorite}"
-                                                     Value="False">
+                                                 Binding="{Binding IsFavorite}"
+                                                 Value="False">
                                             <Setter Property="Text" Value="☆" />
                                         </DataTrigger>
                                     </Button.Triggers>

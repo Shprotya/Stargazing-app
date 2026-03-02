@@ -27,54 +27,58 @@ public class DatabaseService
     {
         try
         {
-            using var stream = await FileSystem.OpenAppPackageFileAsync("constellations.json"); 
-            using var reader = new StreamReader(stream); 
-            var json = await reader.ReadToEndAsync(); 
+            // 1. Load the JSON from the app package
+            using var stream = await FileSystem.OpenAppPackageFileAsync("constellations.json");
+            using var reader = new StreamReader(stream);
+            var json = await reader.ReadToEndAsync();
             var data = JsonConvert.DeserializeObject<ConstellationData>(json);
 
-            if (data?.Constellations == null) return; 
+            if (data?.Constellations == null) return;
 
-            // Get the version currently saved on the device (default to 0 if new install)
+            // 2. Check versions
             int currentDbVersion = Preferences.Default.Get("database_version", 0);
-            var dbCount = await _database.Table<Constellation>().CountAsync(); 
 
-            // Trigger update if version is higher OR if count is different
-            if (data.Version > currentDbVersion || dbCount != data.Constellations.Count)
+            // Only update if the JSON version is higher OR the database is empty
+            var dbCount = await _database.Table<Constellation>().CountAsync();
+
+            if (data.Version > currentDbVersion || dbCount == 0)
             {
-                // Remember which constellations were favorites
-                var existingFavorites = await _database.Table<Constellation>()
-                                                 .Where(c => c.IsFavorite)
-                                                 .ToListAsync(); 
-                var favoriteNames = existingFavorites.Select(f => f.Name).ToList();
+                // 3. Keep track of user favorites before wiping!
+                // We don't want the user to lose their "Star" selections just because we updated the data.
+                var favorites = await _database.Table<Constellation>()
+                                               .Where(c => c.IsFavorite)
+                                               .ToListAsync();
+                var favoriteNames = favorites.Select(f => f.Name).ToList();
 
-                // Clear and rebuild the table
+                // 4. Wipe the existing table to prevent "Ghost" records
                 await _database.DeleteAllAsync<Constellation>();
 
-                var constellations = data.Constellations.Select(c => new Constellation
+                // 5. Transform and Insert new data
+                var newItems = data.Constellations.Select(jsonItem => new Constellation
                 {
-                    Name = c.Name, 
-                    Abbreviation = c.Abbreviation, 
-                    Description = c.Description, 
-                    BestVisibleMonth = c.BestVisibleMonth, 
-                    Hemisphere = c.Hemisphere, 
-                    VisibleLatitude = c.VisibleLatitude, 
-                    BrightestStar = c.BrightestStar, 
-                    NumberOfStars = c.NumberOfStars, 
-                    Area = c.Area, 
-                    ImageUrl = $"Resources/Images/Constellations/{c.Name.Replace(" ", "")}.png", 
-                    // 3. Restore favorite status if it was previously favorited
-                    IsFavorite = favoriteNames.Contains(c.Name)
+                    Name = jsonItem.Name,
+                    Abbreviation = jsonItem.Abbreviation,
+                    Description = jsonItem.Description,
+                    BestVisibleMonth = jsonItem.BestVisibleMonth,
+                    Hemisphere = jsonItem.Hemisphere.Trim(), // Clean whitespace
+                    VisibleLatitude = jsonItem.VisibleLatitude,
+                    BrightestStar = jsonItem.BrightestStar,
+                    NumberOfStars = jsonItem.NumberOfStars,
+                    Area = jsonItem.Area,
+                    ImageUrl = jsonItem.ImageUrl,
+                    // Restore favorite status if the name matches
+                    IsFavorite = favoriteNames.Contains(jsonItem.Name)
                 }).ToList();
 
-                await _database.InsertAllAsync(constellations); 
+                await _database.InsertAllAsync(newItems);
 
-                // Save the new version number to Preferences
+                // 6. Update the saved version number
                 Preferences.Default.Set("database_version", data.Version);
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Update error: {ex.Message}"); 
+            Console.WriteLine($"Database Refresh Failed: {ex.Message}");
         }
     }
 
@@ -96,10 +100,13 @@ public class DatabaseService
 
     public async Task<List<Constellation>> GetConstellationsByHemisphereAsync(string hemisphere)
     {
-        await Init(); 
+        await Init();
+
+        // Use SQL-level filtering for performance.
+        // 'Both' is included so constellations visible in both show up in either filter.
         return await _database.Table<Constellation>()
-            .Where(c => c.Hemisphere == hemisphere || c.Hemisphere == "Both") 
-            .ToListAsync(); 
+            .Where(c => c.Hemisphere == hemisphere || c.Hemisphere == "Both")
+            .ToListAsync();
     }
 
     public async Task<List<Constellation>> GetFavoriteConstellationsAsync()
