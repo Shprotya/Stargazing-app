@@ -183,35 +183,6 @@ public partial class ConstellationPage : ContentPage
         }
     }
 
-    /// <summary>
-    /// Refresh the current view to update favorite icons
-    /// </summary>
-    private async Task RefreshCurrentView()
-    {
-        // Store the current items source type
-        var currentItems = ConstellationList.ItemsSource as List<Constellation>;
-
-        if (currentItems != null && currentItems.Count > 0)
-        {
-            // Reload from database
-            _allConstellations = await _databaseService.GetConstellationsAsync();
-
-            // Reapply the current filter
-            if (currentItems.All(c => c.IsFavorite))
-            {
-                // Favorites filter was active
-                ConstellationList.ItemsSource = await _databaseService.GetFavoriteConstellationsAsync();
-            }
-            else
-            {
-                // Refresh with updated data
-                ConstellationList.ItemsSource = _allConstellations
-                    .Where(c => currentItems.Any(ci => ci.Id == c.Id))
-                    .ToList();
-            }
-        }
-    }
-
     private void UpdateButtonColors(Button selectedButton)
     {
         // Reset all buttons to the default color

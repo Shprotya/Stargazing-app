@@ -80,14 +80,27 @@
                                       Aspect="AspectFit"/>
                             </Border>
                             
-                            <!-- Description (2 lines max) -->
-                            <Label Grid.Row="2"
-                                  Text="{Binding Description}"
-                                  FontSize="11"
-                                  TextColor="{StaticResource OrbitGray}"
-                                  LineBreakMode="TailTruncation"
-                                  MaxLines="2"
-                                  HeightRequest="32"/>
+                            <!-- Description -->
+                            <HorizontalStackLayout>
+                                <Label Grid.Row="2"
+                                      Text="{Binding Description}"
+                                      FontSize="11"
+                                      TextColor="{StaticResource OrbitGray}"
+                                      LineBreakMode="TailTruncation"
+                                      MaxLines="3"
+                                      HeightRequest="32"/>
+                                
+                                <Label Grid.Row="2"
+                                      Text="{Binding }"
+                                      FontSize="11"
+                                      TextColor="{StaticResource NovaPurple}"
+                                      VerticalOptions="End"
+                                      Margin="5,0,0,0"
+                                      IsVisible="{Binding HasMoreInfo}"
+                                      GestureRecognizers="{Binding ReadMoreCommand}"/>
+                            </HorizontalStackLayout>
+                                
+                            
                             
                             <!-- Divider Line -->
                             <BoxView Grid.Row="3"
