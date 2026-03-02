@@ -63,19 +63,36 @@
 
             <VerticalStackLayout Grid.Column="1" Spacing="20">
 
-                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="{Binding CurrentDateTime}" FontSize="13" TextColor="{StaticResource OrbitGray}"/>
-                        <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label Text="{Binding MoonPhaseIcon}" FontSize="30"/>
-                            <VerticalStackLayout>
-                                <Label Text="{Binding MoonPhaseName}" FontAttributes="Bold"/>
-                                <Label Text="{Binding MoonIllumination}" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
+                <VerticalStackLayout Grid.Column="1" Spacing="20">
+
+                    <!-- Date/Time -->
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <Label Text="{Binding CurrentDateTime}" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
+                    </Frame>
+
+                    <!-- Moon Phase -->
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding MoonPhaseIcon}" FontSize="30"/>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding MoonPhaseName}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding MoonIllumination}" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Visibility -->
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Tonight's Visibility" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding VisibilityRating}" FontSize="16"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </VerticalStackLayout>
 
                 <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
                     <VerticalStackLayout Spacing="10">

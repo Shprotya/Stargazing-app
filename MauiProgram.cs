@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using StargazingApp.Services;
 using StargazingApp.ViewModels;
 using StargazingApp.Views;    
 
@@ -26,6 +27,8 @@ namespace StargazingApp
             // Register services
             builder.Services.AddSingleton<NasaApiService>();
             builder.Services.AddSingleton<DatabaseService>();
+            builder.Services.AddSingleton<LocationService>();
+            builder.Services.AddSingleton<SevenTimerService>();
 
             // Register the View Models
             builder.Services.AddSingleton<MainViewModel>();

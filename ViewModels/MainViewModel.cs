@@ -1,73 +1,68 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using StargazingApp.Models;
-using System;
-using System.Threading.Tasks;
+using StargazingApp.Services;
 
 namespace StargazingApp.ViewModels;
 
-/// <summary>
-/// Manages the logic for the Main Page, handling NASA APOD data retrieval and state.
-/// </summary>
 public partial class MainViewModel : ObservableObject
 {
     private readonly NasaApiService _nasaService;
+    private readonly LocationService _locationService;
+    private readonly SevenTimerService _sevenTimerService;
 
-    [ObservableProperty]
-    private ApodData _apodData;
+    [ObservableProperty] private ApodData apodData;
+    [ObservableProperty] private bool isBusy;
+    [ObservableProperty] private string errorMessage;
+    [ObservableProperty] private bool hasError;
 
-    [ObservableProperty]
-    private bool _isBusy;
+    // Moon
+    [ObservableProperty] private string moonPhaseIcon;
+    [ObservableProperty] private string moonPhaseName;
+    [ObservableProperty] private string moonIllumination;
 
-    [ObservableProperty]
-    private string _errorMessage;
+    // Date/Time
+    [ObservableProperty] private string currentDateTime;
 
-    [ObservableProperty]
-    private bool _hasError;
-
-    [ObservableProperty]
-    private string moonPhaseIcon;
-
-    [ObservableProperty]
-    private string moonPhaseName;
-
-    [ObservableProperty]
-    private string moonIllumination;
-
-    [ObservableProperty]
-    private string currentDateTime;
+    // Visibility
+    [ObservableProperty] private string visibilityRating = "Loading...";
+    [ObservableProperty] private string locationName = "";
 
     public IAsyncRelayCommand LoadApodCommand { get; }
 
-    public MainViewModel(NasaApiService nasaService)
+    public MainViewModel(NasaApiService nasaService, LocationService locationService, SevenTimerService sevenTimerService)
     {
         _nasaService = nasaService;
-        LoadApodCommand = new AsyncRelayCommand(LoadApod);
+        _locationService = locationService;
+        _sevenTimerService = sevenTimerService;
+        LoadApodCommand = new AsyncRelayCommand(LoadAll);
     }
 
-    /// <summary>
-    /// Fetches the latest Astronomy Picture of the Day and updates the UI state.
-    /// </summary>
-    private async Task LoadApod()
+    private async Task LoadAll()
     {
+        IsBusy = true;
+        HasError = false;
+        ErrorMessage = string.Empty;
+
         CalculateMoonPhase();
 
+        // Run NASA and visibility in parallel
+        await Task.WhenAll(LoadApodAsync(), LoadVisibilityAsync());
+
+        IsBusy = false;
+    }
+
+    private async Task LoadApodAsync()
+    {
         try
         {
-            IsBusy = true;
-            HasError = false;
-            ErrorMessage = string.Empty;
-
             var result = await _nasaService.GetApodAsync();
-
             if (result != null)
-            {
                 ApodData = result;
-            }
             else
             {
                 HasError = true;
-                ErrorMessage = "Could not find today's data.";
+                ErrorMessage = "Could not load NASA picture.";
             }
         }
         catch (Exception ex)
@@ -75,17 +70,31 @@ public partial class MainViewModel : ObservableObject
             HasError = true;
             ErrorMessage = $"Error: {ex.Message}";
         }
-        finally
+    }
+
+    private async Task LoadVisibilityAsync()
+    {
+        var location = await _locationService.GetLocationAsync();
+        if (location == null)
         {
-            IsBusy = false;
+            VisibilityRating = "📍 Location unavailable";
+            return;
         }
+
+        var conditions = await _sevenTimerService.GetCurrentConditionsAsync(location.Value.Lat, location.Value.Lon);
+        if (conditions == null)
+        {
+            VisibilityRating = "⚠️ Could not load forecast";
+            return;
+        }
+
+        VisibilityRating = _sevenTimerService.GetVisibilityRating(conditions);
     }
 
     private void CalculateMoonPhase()
     {
         CurrentDateTime = DateTime.Now.ToString("dddd, MMM dd • HH:mm");
 
-        // Known new moon reference date
         var knownNewMoon = new DateTime(2000, 1, 6, 18, 14, 0);
         var daysSince = (DateTime.UtcNow - knownNewMoon).TotalDays;
         var synodicMonth = 29.53058867;
@@ -103,8 +112,7 @@ public partial class MainViewModel : ObservableObject
             < 16.61 => ("🌕", "Full Moon"),
             < 22.15 => ("🌖", "Waning Gibbous"),
             < 23.99 => ("🌗", "Last Quarter"),
-            < 29.53 => ("🌘", "Waning Crescent"),
-            _ => ("🌑", "New Moon")
+            _ => ("🌘", "Waning Crescent")
         };
     }
 }

@@ -15,8 +15,15 @@ public class SevenTimerService
             var json = await _httpClient.GetStringAsync(url);
             var data = JsonConvert.DeserializeObject<SevenTimerResponse>(json);
 
-            // First entry = closest forecast to now
-            return data?.DataSeries?.FirstOrDefault();
+            if (data?.DataSeries == null) return null;
+
+            // Find the entry closest to current hour
+            var currentHour = DateTime.UtcNow.Hour;
+            var closest = data.DataSeries
+                .OrderBy(e => Math.Abs(e.Timepoint - currentHour))
+                .FirstOrDefault();
+
+            return closest;
         }
         catch (Exception ex)
         {
