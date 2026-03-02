@@ -25,6 +25,18 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private bool _hasError;
 
+    [ObservableProperty]
+    private string moonPhaseIcon;
+
+    [ObservableProperty]
+    private string moonPhaseName;
+
+    [ObservableProperty]
+    private string moonIllumination;
+
+    [ObservableProperty]
+    private string currentDateTime;
+
     public IAsyncRelayCommand LoadApodCommand { get; }
 
     public MainViewModel(NasaApiService nasaService)
@@ -38,6 +50,8 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     private async Task LoadApod()
     {
+        CalculateMoonPhase();
+
         try
         {
             IsBusy = true;
@@ -65,5 +79,32 @@ public partial class MainViewModel : ObservableObject
         {
             IsBusy = false;
         }
+    }
+
+    private void CalculateMoonPhase()
+    {
+        CurrentDateTime = DateTime.Now.ToString("dddd, MMM dd • HH:mm");
+
+        // Known new moon reference date
+        var knownNewMoon = new DateTime(2000, 1, 6, 18, 14, 0);
+        var daysSince = (DateTime.UtcNow - knownNewMoon).TotalDays;
+        var synodicMonth = 29.53058867;
+        var phase = daysSince % synodicMonth;
+        var illumination = (int)(50 * (1 - Math.Cos(2 * Math.PI * phase / synodicMonth)));
+
+        MoonIllumination = $"Illumination: {illumination}%";
+
+        (MoonPhaseIcon, MoonPhaseName) = phase switch
+        {
+            < 1.85 => ("🌑", "New Moon"),
+            < 7.38 => ("🌒", "Waxing Crescent"),
+            < 9.22 => ("🌓", "First Quarter"),
+            < 14.77 => ("🌔", "Waxing Gibbous"),
+            < 16.61 => ("🌕", "Full Moon"),
+            < 22.15 => ("🌖", "Waning Gibbous"),
+            < 23.99 => ("🌗", "Last Quarter"),
+            < 29.53 => ("🌘", "Waning Crescent"),
+            _ => ("🌑", "New Moon")
+        };
     }
 }

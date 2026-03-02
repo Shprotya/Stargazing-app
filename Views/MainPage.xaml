@@ -65,15 +65,15 @@
 
                 <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
                     <VerticalStackLayout Spacing="10">
+                        <Label Text="{Binding CurrentDateTime}" FontSize="13" TextColor="{StaticResource OrbitGray}"/>
                         <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
                         <HorizontalStackLayout Spacing="10">
-                            <Label Text="🌙" FontSize="30"/>
+                            <Label Text="{Binding MoonPhaseIcon}" FontSize="30"/>
                             <VerticalStackLayout>
-                                <Label Text="Waxing Gibbous" FontAttributes="Bold"/>
-                                <Label Text="Illumination: 78%" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
+                                <Label Text="{Binding MoonPhaseName}" FontAttributes="Bold"/>
+                                <Label Text="{Binding MoonIllumination}" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
-                        <Label Text="Visibility: Excellent" FontSize="12" Margin="0,5,0,0"/>
                     </VerticalStackLayout>
                 </Frame>
 
