@@ -65,7 +65,7 @@ public class DatabaseService
                     BrightestStar = jsonItem.BrightestStar,
                     NumberOfStars = jsonItem.NumberOfStars,
                     Area = jsonItem.Area,
-                    ImageUrl = jsonItem.ImageUrl,
+                    ImageUrl = $"Resources/Images/Constellations/{jsonItem.ImageUrl}",
                     // Restore favorite status if the name matches
                     IsFavorite = favoriteNames.Contains(jsonItem.Name)
                 }).ToList();

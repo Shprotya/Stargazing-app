@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
+using StargazingApp.Models;
+
 namespace StargazingApp.Views;
 
 public partial class ConstellationPage : ContentPage
 {
     private readonly ConstellationViewModel _viewModel;
+    private List<Constellation> _allConstellations = new();
 
     public ConstellationPage(ConstellationViewModel viewModel)
     {
@@ -20,6 +25,7 @@ public partial class ConstellationPage : ContentPage
         // Initial load
         await _viewModel.LoadAllCommand.ExecuteAsync(null);
         UpdateButtonColors(); // Set initial button state
+        _allConstellations = _viewModel.Constellations.ToList(); // Cache full list
     }
 
     private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -41,4 +47,20 @@ public partial class ConstellationPage : ContentPage
         BtnSouth.BackgroundColor = _viewModel.ActiveFilter == "Southern" ? activeColor : inactiveColor;
         BtnFav.BackgroundColor = _viewModel.ActiveFilter == "Favorites" ? activeColor : inactiveColor;
     }
+
+    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(e.NewTextValue))
+        {
+            _viewModel.UpdateList(_allConstellations);
+            return;
+        }
+
+        var filtered = _allConstellations
+            .Where(c => c.Name.ToLower().Contains(e.NewTextValue.ToLower()))
+            .OrderBy(c => c.Name);
+
+        _viewModel.UpdateList(filtered);
+    }
+
 }

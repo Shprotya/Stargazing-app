@@ -86,7 +86,7 @@ public partial class ConstellationViewModel : ObservableObject
     }
 
     // Helper to avoid repeating Clear/Add logic
-    private void UpdateList(IEnumerable<Constellation> items)
+    public void UpdateList(IEnumerable<Constellation> items)
     {
         Constellations.Clear();
         foreach (var c in items)

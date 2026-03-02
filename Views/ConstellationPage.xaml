@@ -13,9 +13,8 @@
             <!-- Search Bar -->
             <SearchBar x:Name="SearchBar"
                 Placeholder="Search constellations..."
-                Text="{Binding SearchText}"
-                SearchCommand="{Binding SearchCommand}"
-                SearchCommandParameter="{Binding Text, Source={RelativeSource Self}}" />
+                TextChanged="OnSearchTextChanged"
+                SearchCommand="{Binding SearchCommand}"/>
 
             <!--Filtering buttons-->
             <HorizontalStackLayout Spacing="10">
