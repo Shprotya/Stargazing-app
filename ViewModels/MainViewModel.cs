@@ -8,6 +8,8 @@ namespace StargazingApp.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
+    private System.Threading.Timer _clockTimer;
+
     private readonly NasaApiService _nasaService;
     private readonly LocationService _locationService;
     private readonly SevenTimerService _sevenTimerService;
@@ -39,6 +41,11 @@ public partial class MainViewModel : ObservableObject
         _locationService = locationService;
         _sevenTimerService = sevenTimerService;
         LoadApodCommand = new AsyncRelayCommand(LoadAll);
+
+        _clockTimer = new System.Threading.Timer(_ =>
+        {
+            MainThread.BeginInvokeOnMainThread(() => CurrentDateTime = DateTime.Now.ToString("dddd, MMM dd • HH:mm"));
+        }, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
     }
 
     private async Task LoadAll()
