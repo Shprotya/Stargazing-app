@@ -17,8 +17,12 @@ public class SevenTimerService
 
             if (data?.DataSeries == null) return null;
 
-            // Find the entry closest to current hour
-            var closest = data.DataSeries.FirstOrDefault();
+            // Find the entry closest to the current UTC hour
+            var nowHour = DateTime.UtcNow.Hour;
+
+            var closest = data.DataSeries
+                .OrderBy(e => Math.Abs(e.Timepoint - nowHour))
+                .FirstOrDefault();
 
             return closest;
         }
@@ -37,7 +41,7 @@ public class SevenTimerService
         bool atmospherePoor = entry.Seeing >= 5 || entry.Transparency >= 5;
 
         if (entry.CloudCover >= 7)
-            rating = "🔴 Not visible tonight";
+            rating = $"🔴 Too cloudy...";
         else if (entry.CloudCover >= 5 || (entry.CloudCover >= 3 && atmospherePoor))
             rating = "🟠 Poor";
         else if (entry.CloudCover >= 3 || atmospherePoor)
@@ -88,6 +92,6 @@ public class SevenTimerService
             _ => "Unknown"
         };
 
-        return $"{rating}\n☁️ Cloud cover: {cloudText}\n👁️ Seeing: {seeingText}\n🔭 Transparency: {transparencyText}";
+        return $"{rating}\n☁️ Cloud cover: {cloudText}\n- Above Cloud Data:\n👁️ Seeing: {seeingText}\n🔭 Transparency: {transparencyText}";
     }
 }
