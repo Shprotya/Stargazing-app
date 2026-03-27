@@ -1,125 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="StargazingApp.Views.MainPage"
-             BackgroundColor="{StaticResource Main}">
+             x:Class="StargazingApp.Views.MainPage">
 
-    <ScrollView>
-        <Grid ColumnDefinitions="2*, *" ColumnSpacing="20" Padding="20">
+    <Grid>
+        <Image Grid.Row="0"
+           Source="nightsky.jpg"
+           Aspect="AspectFill"
+           Opacity="0.3" />
+        
+        <ScrollView>
+            <Grid ColumnDefinitions="2*, *" ColumnSpacing="20" Padding="20">
 
-            <Frame Grid.Column="0" 
-               BackgroundColor="{StaticResource Sections}"
-               CornerRadius="15" Padding="15">
-                <VerticalStackLayout Spacing="15">
+                <Frame Grid.Column="0" 
+                   BackgroundColor="{StaticResource Sections}"
+                   CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="15">
 
-                    <ActivityIndicator x:Name="LoadingIndicator"
-                       IsRunning="{Binding IsBusy}"
-                       IsVisible="{Binding IsBusy}"
-                       Color="{StaticResource NovaPurple}"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+                        <ActivityIndicator x:Name="LoadingIndicator"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Color="{StaticResource NovaPurple}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
 
-                    <Label Text="NASA Picture of the Day" 
-                           FontSize="20" 
-                           FontAttributes="Bold"/>
+                        <Label Text="NASA Picture of the Day" 
+                               FontSize="20" 
+                               FontAttributes="Bold"/>
 
-                    <Label Text="{Binding ApodData.Title}" 
-                           FontSize="18" 
-                           FontAttributes="Bold"/>
-                    <Label Text="{Binding ApodData.Date}" 
-                           FontSize="14" 
-                           TextColor="{StaticResource OrbitGray}"/>
+                        <Label Text="{Binding ApodData.Title}" 
+                               FontSize="18" 
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding ApodData.Date}" 
+                               FontSize="14" 
+                               TextColor="{StaticResource OrbitGray}"/>
 
-                    <Frame x:Name="ImageFrame" 
-                           Padding="0" 
-                           IsClippedToBounds="True" >
+                        <Frame x:Name="ImageFrame" 
+                               Padding="0" 
+                               IsClippedToBounds="True" >
                         
-                        <Image Source="{Binding ApodData.Url}" 
-                               Aspect="AspectFit" 
-                               HeightRequest="300"/>
+                            <Image Source="{Binding ApodData.Url}" 
+                                   Aspect="AspectFit" 
+                                   HeightRequest="300"/>
+                        </Frame>
+
+                        <Label FontSize="12" 
+                               Text="{Binding ApodData.Copyright}"
+                               TextColor="{StaticResource OrbitGray}"/>
+
+                        <Frame x:Name="ExplanationFrame" 
+                               BackgroundColor="{StaticResource Sections}" >
+                            <Label Text="{Binding ApodData.Explanation}" FontSize="14"/>
+                        </Frame>
+
+                        <!-- Error Message -->
+                        <Label x:Name="ErrorLabel"
+                           Text="{Binding ErrorMessage}"
+                           IsVisible="{Binding HasError}"
+                           FontSize="14"
+                           TextColor="#EF4444"
+                           HorizontalOptions="Center"
+                           LineBreakMode="WordWrap"
+                           Margin="0,10,0,0"/>      
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="20">
+
+                    <!-- Date/Time -->
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <Label Text="{Binding CurrentDateTime}" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
                     </Frame>
 
-                    <Label FontSize="12" 
-                           Text="{Binding ApodData.Copyright}"
-                           TextColor="{StaticResource OrbitGray}"/>
-
-                    <Frame x:Name="ExplanationFrame" 
-                           BackgroundColor="{StaticResource Sections}" >
-                        <Label Text="{Binding ApodData.Explanation}" FontSize="14"/>
+                    <!-- Moon Phase -->
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding MoonPhaseIcon}" FontSize="30"/>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding MoonPhaseName}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding MoonIllumination}" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </Frame>
 
-                    <!-- Error Message -->
-                    <Label x:Name="ErrorLabel"
-                       Text="{Binding ErrorMessage}"
-                       IsVisible="{Binding HasError}"
-                       FontSize="14"
-                       TextColor="#EF4444"
-                       HorizontalOptions="Center"
-                       LineBreakMode="WordWrap"
-                       Margin="0,10,0,0"/>      
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Tonight's Visibility" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding VisibilityRating}" FontSize="16"/>
+
+                            <!-- Sunrise / Sunset row -->
+                            <HorizontalStackLayout Spacing="20" Margin="0,5,0,0">
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="🌅" FontSize="16"/>
+                                    <VerticalStackLayout>
+                                        <Label Text="Sunrise" FontSize="10" TextColor="{StaticResource OrbitGray}"/>
+                                        <Label Text="{Binding SunriseTime}" FontSize="14" FontAttributes="Bold"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="🌇" FontSize="16"/>
+                                    <VerticalStackLayout>
+                                        <Label Text="Sunset" FontSize="10" TextColor="{StaticResource OrbitGray}"/>
+                                        <Label Text="{Binding SunsetTime}" FontSize="14" FontAttributes="Bold"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Upcoming Events" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="• Meteor Shower (Dec 14)" FontSize="13"/>
+                            <Label Text="• New Moon (Dec 30)" FontSize="13"/>
+                            <Label Text="• Mars Conjunction" FontSize="13"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
                 </VerticalStackLayout>
-            </Frame>
+            </Grid>
+        </ScrollView>
 
-            <VerticalStackLayout Grid.Column="1" Spacing="20">
-
-                <!-- Date/Time -->
-                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                    <Label Text="{Binding CurrentDateTime}" FontSize="14" TextColor="{StaticResource OrbitGray}"/>
-                </Frame>
-
-                <!-- Moon Phase -->
-                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Moon Phase" FontSize="18" FontAttributes="Bold"/>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label Text="{Binding MoonPhaseIcon}" FontSize="30"/>
-                            <VerticalStackLayout>
-                                <Label Text="{Binding MoonPhaseName}" FontAttributes="Bold"/>
-                                <Label Text="{Binding MoonIllumination}" FontSize="12" TextColor="{StaticResource OrbitGray}"/>
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
-
-                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Tonight's Visibility" FontSize="18" FontAttributes="Bold"/>
-                        <Label Text="{Binding VisibilityRating}" FontSize="16"/>
-
-                        <!-- Sunrise / Sunset row -->
-                        <HorizontalStackLayout Spacing="20" Margin="0,5,0,0">
-                            <HorizontalStackLayout Spacing="6">
-                                <Label Text="🌅" FontSize="16"/>
-                                <VerticalStackLayout>
-                                    <Label Text="Sunrise" FontSize="10" TextColor="{StaticResource OrbitGray}"/>
-                                    <Label Text="{Binding SunriseTime}" FontSize="14" FontAttributes="Bold"/>
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-
-                            <HorizontalStackLayout Spacing="6">
-                                <Label Text="🌇" FontSize="16"/>
-                                <VerticalStackLayout>
-                                    <Label Text="Sunset" FontSize="10" TextColor="{StaticResource OrbitGray}"/>
-                                    <Label Text="{Binding SunsetTime}" FontSize="14" FontAttributes="Bold"/>
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-                        </HorizontalStackLayout>
-
-                    </VerticalStackLayout>
-                </Frame>
-
-                <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Upcoming Events" FontSize="18" FontAttributes="Bold"/>
-                        <Label Text="• Meteor Shower (Dec 14)" FontSize="13"/>
-                        <Label Text="• New Moon (Dec 30)" FontSize="13"/>
-                        <Label Text="• Mars Conjunction" FontSize="13"/>
-                    </VerticalStackLayout>
-                </Frame>
-
-            </VerticalStackLayout>
-        </Grid>
-    </ScrollView>
+    </Grid>
 
 </ContentPage>

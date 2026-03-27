@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StargazingApp.Views.ConstellationPage"
-             Title="Constellations"
-             BackgroundColor="{StaticResource Main}">
+             Title="Constellations">
 
-    <Grid RowDefinitions="Auto,*" Padding="20">
+    <Grid>
+        <Image Grid.Row="0"
+       Source="nightsky.jpg"
+       Aspect="AspectFill"
+       Opacity="0.3" />
 
-        <!-- Search and Filter Section -->
+        <Grid RowDefinitions="Auto,*" Padding="20">
+
+            <!-- Search and Filter Section -->
         <VerticalStackLayout Grid.Row="0" Spacing="10" Margin="0,0,0,20">
 
             <!-- Search Bar -->
@@ -158,5 +163,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-    </Grid>
+     </Grid>
+        </Grid>
 </ContentPage>
