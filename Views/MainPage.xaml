@@ -117,9 +117,9 @@
                     <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="Upcoming Events" FontSize="18" FontAttributes="Bold"/>
-                            <Label Text="• Meteor Shower (Dec 14)" FontSize="13"/>
-                            <Label Text="• New Moon (Dec 30)" FontSize="13"/>
-                            <Label Text="• Mars Conjunction" FontSize="13"/>
+                            <Label Text="• Apr 22 — Lyrids Meteor Shower peak" FontSize="13"/>
+                            <Label Text="• May 6 — Eta Aquarids Meteor Shower peak" FontSize="13"/>
+                            <Label Text="• Jun 21 — Summer Solstice" FontSize="13"/>
                         </VerticalStackLayout>
                     </Frame>
 

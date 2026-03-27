@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:StargazingApp"
     xmlns:views="clr-namespace:StargazingApp.Views"
     Title="StargazingApp">
-    
+
     <TabBar>
         <ShellContent
             Title="Home"

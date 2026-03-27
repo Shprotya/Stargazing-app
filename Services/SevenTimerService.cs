@@ -18,10 +18,8 @@ public class SevenTimerService
             if (data?.DataSeries == null) return null;
 
             // Find the entry closest to the current UTC hour
-            var nowHour = DateTime.UtcNow.Hour;
-
             var closest = data.DataSeries
-                .OrderBy(e => Math.Abs(e.Timepoint - nowHour))
+                .OrderBy(e => e.Timepoint)
                 .FirstOrDefault();
 
             return closest;
