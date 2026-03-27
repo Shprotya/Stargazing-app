@@ -36,7 +36,7 @@ public partial class ConstellationViewModel : ObservableObject
 
         // Get constellations that are ONLY in the specified hemisphere (exclude "Both")
         var allItems = await _databaseService.GetConstellationsAsync();
-        var filtered = allItems.Where(c => c.Hemisphere == hemisphere).OrderBy(c => c.Name);
+        var filtered = allItems.Where(c => c.Hemisphere == hemisphere || c.Hemisphere == "Both").OrderBy(c => c.Name);
 
         UpdateList(filtered);
     }

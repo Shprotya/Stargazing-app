@@ -100,6 +100,12 @@ public partial class MainViewModel : ObservableObject
         SunriseTime = sunrise.ToString("HH:mm");
         SunsetTime = sunset.ToString("HH:mm");
 
+        if (isDaytime)
+        {
+            VisibilityRating = "☀️ It's daytime — check back after sunset.";
+            return;
+        }
+
         var conditions = await _sevenTimerService.GetCurrentConditionsAsync(location.Value.Lat, location.Value.Lon);
         if (conditions == null)
         {
@@ -110,10 +116,8 @@ public partial class MainViewModel : ObservableObject
         //Debugging and location check
         //VisibilityRating = $"📍 Got location: {location.Value.Lat:F3}, {location.Value.Lon:F3}";
 
-        var rating = _sevenTimerService.GetVisibilityRating(conditions);
-        VisibilityRating = isDaytime
-            ? $"{rating}\n☀️ It's daytime — check back after sunset."
-            : rating;
+        VisibilityRating = _sevenTimerService.GetVisibilityRating(conditions);
+
     }
 
     private void CalculateMoonPhase()
