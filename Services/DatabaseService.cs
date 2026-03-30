@@ -14,10 +14,12 @@ public class DatabaseService
         // Find where to save the file on the device
         var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3"); 
 
-        _database = new SQLiteAsyncConnection(dbPath); 
+        _database = new SQLiteAsyncConnection(dbPath);
 
         // Create the Constellations table if it doesn't exist
-        await _database.CreateTableAsync<Constellation>(); 
+        // and the JournalEntries table for user logs.
+        await _database.CreateTableAsync<Constellation>();
+        await _database.CreateTableAsync<JournalEntry>();
 
         // This handles the automatic update check every time the app starts
         await RefreshDatabaseIfChanged();
@@ -82,8 +84,7 @@ public class DatabaseService
         }
     }
 
-    // Filter & Search Methods
-
+    #region Filter & Search Methods
     public async Task<List<Constellation>> GetConstellationsAsync()
     {
         await Init(); 
@@ -129,4 +130,58 @@ public class DatabaseService
             await _database.UpdateAsync(constellation); 
         }
     }
+
+    #endregion
+
+    #region Journal Methods
+    public async Task<List<JournalEntry>> GetJournalEntriesAsync()
+    {
+        await Init();
+        // LINQ: order by most recent first
+        var entries = await _database.Table<JournalEntry>().ToListAsync();
+        return entries.OrderByDescending(e => e.CreatedAt).ToList();
+    }
+
+    public async Task<List<JournalEntry>> SearchJournalAsync(string term)
+    {
+        await Init();
+        var all = await _database.Table<JournalEntry>().ToListAsync();
+
+        // LINQ + ISearchable interface used together
+        return all
+            .Where(e => e.MatchesSearch(term))
+            .OrderByDescending(e => e.CreatedAt)
+            .ToList();
+    }
+
+    public async Task<List<JournalEntry>> GetJournalEntriesByDateRangeAsync(DateTime from, DateTime to)
+    {
+        await Init();
+        // Working with Dates: filter by date range using LINQ
+        var all = await _database.Table<JournalEntry>().ToListAsync();
+        return all
+            .Where(e => e.CreatedAt.Date >= from.Date && e.CreatedAt.Date <= to.Date)
+            .OrderByDescending(e => e.CreatedAt)
+            .ToList();
+    }
+
+    public async Task<int> SaveJournalEntryAsync(JournalEntry entry)
+    {
+        await Init();
+        entry.UpdatedAt = DateTime.Now;
+
+        if (entry.Id == 0)
+        {
+            entry.CreatedAt = DateTime.Now;
+            return await _database.InsertAsync(entry);
+        }
+        return await _database.UpdateAsync(entry);
+    }
+
+    public async Task<int> DeleteJournalEntryAsync(JournalEntry entry)
+    {
+        await Init();
+        return await _database.DeleteAsync(entry);
+    }
+    #endregion
 }
