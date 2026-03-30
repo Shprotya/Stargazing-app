@@ -3,6 +3,14 @@
 namespace StargazingApp.Models;
 
 /// <summary>
+/// Implemented by any model that supports full-text search.
+/// </summary>
+public interface ISearchable
+{
+    bool MatchesSearch(string term);
+}
+
+/// <summary>
 /// Base class for all user-created log entries.
 /// Provides common audit fields shared across entry types.
 /// </summary>
