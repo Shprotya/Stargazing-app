@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StargazingApp.Views.JournalPage"
+             Title="Journal">
+
+    <Grid>
+        <!-- Background image (same as other pages) -->
+        <Image Source="nightsky.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3" />
+
+        <!-- Editor overlay (shown when IsEditing = true) -->
+        <Grid x:Name="EditorOverlay"
+              IsVisible="{Binding IsEditing}"
+              BackgroundColor="#CC0B0E14"
+              ZIndex="10"
+              Padding="40">
+
+            <Frame BackgroundColor="{StaticResource Sections}"
+                   CornerRadius="15"    
+                   Padding="24"
+                   VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="New Entry"
+                           FontSize="20"
+                           FontAttributes="Bold" />
+
+                    <!-- Title -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Title" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                        <Entry x:Name="TitleEntry"
+                               Text="{Binding EditTitle}"
+                               Placeholder="What did you observe?"
+                               BackgroundColor="{StaticResource Button}"
+                               TextColor="{StaticResource StarWhite}"
+                               PlaceholderColor="{StaticResource OrbitGray}" />
+                    </VerticalStackLayout>
+
+                    <!-- Conditions -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Sky Conditions" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                        <Entry Text="{Binding EditConditions}"
+                               Placeholder="e.g. Clear skies, no moon"
+                               BackgroundColor="{StaticResource Button}"
+                               TextColor="{StaticResource StarWhite}"
+                               PlaceholderColor="{StaticResource OrbitGray}" />
+                    </VerticalStackLayout>
+
+                    <!-- Rating -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Rating" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                        <HorizontalStackLayout Spacing="8">
+                            <Button Text="1⭐" Command="{Binding SetRatingCommand}" CommandParameter="1"
+                                    FontSize="12" Padding="8,4"
+                                    BackgroundColor="{StaticResource Button}" />
+                            <Button Text="2⭐" Command="{Binding SetRatingCommand}" CommandParameter="2"
+                                    FontSize="12" Padding="8,4"
+                                    BackgroundColor="{StaticResource Button}" />
+                            <Button Text="3⭐" Command="{Binding SetRatingCommand}" CommandParameter="3"
+                                    FontSize="12" Padding="8,4"
+                                    BackgroundColor="{StaticResource Button}" />
+                            <Button Text="4⭐" Command="{Binding SetRatingCommand}" CommandParameter="4"
+                                    FontSize="12" Padding="8,4"
+                                    BackgroundColor="{StaticResource Button}" />
+                            <Button Text="5⭐" Command="{Binding SetRatingCommand}" CommandParameter="5"
+                                    FontSize="12" Padding="8,4"
+                                    BackgroundColor="{StaticResource Button}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding EditRating, StringFormat='Selected: {0} star(s)'}"
+                               FontSize="11" TextColor="{StaticResource OrbitGray}" />
+                    </VerticalStackLayout>
+
+                    <!-- Body notes -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Observations / Notes" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                        <Editor Text="{Binding EditBody}"
+                                Placeholder="Write your observations here..."
+                                HeightRequest="140"
+                                BackgroundColor="{StaticResource Button}"
+                                TextColor="{StaticResource StarWhite}"
+                                PlaceholderColor="{StaticResource OrbitGray}" />
+                    </VerticalStackLayout>
+
+                    <!-- Action buttons -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Button Grid.Column="0"
+                                Text="Cancel"
+                                Command="{Binding CancelEditCommand}"
+                                BackgroundColor="{StaticResource Button}" />
+                        <Button Grid.Column="1"
+                                Text="Save Entry"
+                                Command="{Binding SaveCommand}"
+                                BackgroundColor="{StaticResource NovaPurple}" />
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!-- Main content -->
+        <Grid RowDefinitions="Auto,*" Padding="20" IsVisible="{Binding IsEditing, Converter={x:StaticResource InverseBoolConverter}}">
+
+            <!-- Top bar: search, filters, new entry -->
+            <VerticalStackLayout Grid.Row="0" Spacing="10" Margin="0,0,0,16">
+
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <SearchBar Grid.Column="0"
+                               x:Name="JournalSearchBar"
+                               Placeholder="Search entries..."
+                               TextChanged="OnSearchTextChanged" />
+                    <Button Grid.Column="1"
+                            Text="+ New Entry"
+                            Command="{Binding NewEntryCommand}"
+                            BackgroundColor="{StaticResource NovaPurple}"
+                            FontAttributes="Bold" />
+                </Grid>
+
+                <!-- Filter buttons -->
+                <HorizontalStackLayout Spacing="10">
+                    <Button x:Name="BtnAll"
+                            Text="All"
+                            Command="{Binding LoadAllCommand}" />
+                    <Button x:Name="BtnMonth"
+                            Text="This Month"
+                            Command="{Binding FilterThisMonthCommand}" />
+                </HorizontalStackLayout>
+
+                <!-- Date range filter (Working with Dates) -->
+                <Frame BackgroundColor="{StaticResource Sections}" Padding="12" CornerRadius="10">
+                    <Grid ColumnDefinitions="Auto,*,Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" Text="From:" VerticalOptions="Center" FontSize="12"
+                               TextColor="{StaticResource OrbitGray}" />
+                        <DatePicker Grid.Column="1"
+                                    x:Name="DateFrom"
+                                    Date="{Binding FilterFrom}"
+                                    TextColor="{StaticResource StarWhite}"
+                                    Format="MMM dd, yyyy" />
+                        <Label Grid.Column="2" Text="To:" VerticalOptions="Center" FontSize="12"
+                               TextColor="{StaticResource OrbitGray}" />
+                        <DatePicker Grid.Column="3"
+                                    x:Name="DateTo"
+                                    Date="{Binding FilterTo}"
+                                    TextColor="{StaticResource StarWhite}"
+                                    Format="MMM dd, yyyy" />
+                        <Button Grid.Column="4"
+                                Text="Apply"
+                                Command="{Binding FilterByDateRangeCommand}"
+                                FontSize="12"
+                                Padding="10,6"
+                                BackgroundColor="{StaticResource Button}" />
+                    </Grid>
+                </Frame>
+
+            </VerticalStackLayout>
+
+            <!-- Empty state -->
+            <VerticalStackLayout Grid.Row="1"
+                                 IsVisible="{Binding HasEntries, Converter={x:StaticResource InverseBoolConverter}}"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="12">
+                <Label Text="🌌"
+                       FontSize="60"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="No journal entries yet."
+                       FontSize="18"
+                       TextColor="{StaticResource OrbitGray}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="Tap '+ New Entry' to record your first observation."
+                       FontSize="13"
+                       TextColor="{StaticResource OrbitGray}"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- Journal entries list — uses DataTemplate -->
+            <CollectionView Grid.Row="1"
+                            x:Name="JournalList"
+                            ItemsSource="{Binding Entries}"
+                            SelectionMode="None"
+                            IsVisible="{Binding HasEntries}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="12" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{StaticResource Sections}"
+                               CornerRadius="12"
+                               Padding="16">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="8">
+
+                                <!-- Row 0: Title + action buttons -->
+                                <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding Title}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation" />
+
+                                    <Button Grid.Column="1"
+                                            Text="✏️"
+                                            FontSize="14"
+                                            BackgroundColor="Transparent"
+                                            Padding="4"
+                                            WidthRequest="36"
+                                            HeightRequest="36"
+                                            Command="{Binding BindingContext.EditEntryCommand, Source={x:Reference JournalList}}"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Grid.Column="2"
+                                            Text="🗑️"
+                                            FontSize="14"
+                                            BackgroundColor="Transparent"
+                                            Padding="4"
+                                            WidthRequest="36"
+                                            HeightRequest="36"
+                                            Command="{Binding BindingContext.DeleteCommand, Source={x:Reference JournalList}}"
+                                            CommandParameter="{Binding .}" />
+                                </Grid>
+
+                                <!-- Row 1: Date + rating -->
+                                <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding FormattedDate}"
+                                           FontSize="11"
+                                           TextColor="{StaticResource OrbitGray}" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding RatingDisplay}"
+                                           FontSize="12" />
+                                </Grid>
+
+                                <!-- Row 2: Conditions badge -->
+                                <Frame Grid.Row="2"
+                                       IsVisible="{Binding Conditions, Converter={x:StaticResource StringNotEmptyConverter}}"
+                                       BackgroundColor="{StaticResource Button}"
+                                       CornerRadius="6"
+                                       Padding="8,4"
+                                       HorizontalOptions="Start">
+                                    <Label Text="{Binding Conditions, StringFormat='☁️  {0}'}"
+                                           FontSize="11"
+                                           TextColor="{StaticResource OrbitGray}" />
+                                </Frame>
+
+                                <!-- Row 3: Body preview -->
+                                <Label Grid.Row="3"
+                                       Text="{Binding Body}"
+                                       FontSize="13"
+                                       TextColor="{StaticResource OrbitGray}"
+                                       MaxLines="3"
+                                       LineBreakMode="TailTruncation" />
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </Grid>
+</ContentPage>

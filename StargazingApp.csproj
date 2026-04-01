@@ -168,7 +168,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\JournalPage.xaml.cs">
+	    <DependentUpon>JournalPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\ConstellationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\JournalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
