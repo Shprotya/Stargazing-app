@@ -59,15 +59,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="NewFolder\**" />
-	  <Compile Remove="NewFolder\**" />
-	  <EmbeddedResource Remove="NewFolder\**" />
-	  <MauiCss Remove="NewFolder\**" />
-	  <MauiXaml Remove="NewFolder\**" />
-	  <None Remove="NewFolder\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Include="Resources\Images\Constellations\Andromeda.png" />
 	  <MauiAsset Include="Resources\Images\Constellations\Antlia.png" />
 	  <MauiAsset Include="Resources\Images\Constellations\Apus.png" />
