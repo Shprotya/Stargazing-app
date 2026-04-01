@@ -33,10 +33,12 @@ namespace StargazingApp
             // Register the View Models
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<ConstellationViewModel>();
+            builder.Services.AddSingleton<JournalViewModel>();
 
             // Register the Views
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<ConstellationPage>();
+            builder.Services.AddSingleton<JournalPage>();
 
 
             return builder.Build();
