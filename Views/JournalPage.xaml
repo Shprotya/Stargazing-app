@@ -22,81 +22,83 @@
                    Padding="24"
                    VerticalOptions="Center">
 
-                <VerticalStackLayout Spacing="16">
+                <ScrollView>
+                    <VerticalStackLayout Spacing="16">
 
-                    <Label Text="New Entry"
+                        <Label Text="New Entry"
                            FontSize="20"
                            FontAttributes="Bold" />
 
-                    <!-- Title -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Title" FontSize="12" TextColor="{StaticResource OrbitGray}" />
-                        <Entry x:Name="TitleEntry"
+                        <!-- Title -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Title" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                            <Entry x:Name="TitleEntry"
                                Text="{Binding EditTitle}"
                                Placeholder="What did you observe?"
                                BackgroundColor="{StaticResource Button}"
                                TextColor="{StaticResource StarWhite}"
                                PlaceholderColor="{StaticResource OrbitGray}" />
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
 
-                    <!-- Conditions -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Sky Conditions" FontSize="12" TextColor="{StaticResource OrbitGray}" />
-                        <Entry Text="{Binding EditConditions}"
+                        <!-- Conditions -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Sky Conditions" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                            <Entry Text="{Binding EditConditions}"
                                Placeholder="e.g. Clear skies, no moon"
                                BackgroundColor="{StaticResource Button}"
                                TextColor="{StaticResource StarWhite}"
                                PlaceholderColor="{StaticResource OrbitGray}" />
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
 
-                    <!-- Rating -->
-                    <VerticalStackLayout Spacing="6">
-                        <Label Text="Rating" FontSize="12" TextColor="{StaticResource OrbitGray}" />
-                        <HorizontalStackLayout Spacing="8">
-                            <Button Text="1⭐" Command="{Binding SetRatingCommand}" CommandParameter="1"
+                        <!-- Rating -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Rating" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                            <HorizontalStackLayout Spacing="8">
+                                <Button Text="1⭐" Command="{Binding SetRatingCommand}" CommandParameter="1"
                                     FontSize="12" Padding="8,4"
                                     BackgroundColor="{StaticResource Button}" />
-                            <Button Text="2⭐" Command="{Binding SetRatingCommand}" CommandParameter="2"
+                                <Button Text="2⭐" Command="{Binding SetRatingCommand}" CommandParameter="2"
                                     FontSize="12" Padding="8,4"
                                     BackgroundColor="{StaticResource Button}" />
-                            <Button Text="3⭐" Command="{Binding SetRatingCommand}" CommandParameter="3"
+                                <Button Text="3⭐" Command="{Binding SetRatingCommand}" CommandParameter="3"
                                     FontSize="12" Padding="8,4"
                                     BackgroundColor="{StaticResource Button}" />
-                            <Button Text="4⭐" Command="{Binding SetRatingCommand}" CommandParameter="4"
+                                <Button Text="4⭐" Command="{Binding SetRatingCommand}" CommandParameter="4"
                                     FontSize="12" Padding="8,4"
                                     BackgroundColor="{StaticResource Button}" />
-                            <Button Text="5⭐" Command="{Binding SetRatingCommand}" CommandParameter="5"
+                                <Button Text="5⭐" Command="{Binding SetRatingCommand}" CommandParameter="5"
                                     FontSize="12" Padding="8,4"
                                     BackgroundColor="{StaticResource Button}" />
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding EditRating, StringFormat='Selected: {0} star(s)'}"
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding EditRating, StringFormat='Selected: {0} star(s)'}"
                                FontSize="11" TextColor="{StaticResource OrbitGray}" />
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
 
-                    <!-- Body notes -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Observations / Notes" FontSize="12" TextColor="{StaticResource OrbitGray}" />
-                        <Editor Text="{Binding EditBody}"
+                        <!-- Body notes -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Observations / Notes" FontSize="12" TextColor="{StaticResource OrbitGray}" />
+                            <Editor Text="{Binding EditBody}"
                                 Placeholder="Write your observations here..."
                                 HeightRequest="140"
                                 BackgroundColor="{StaticResource Button}"
                                 TextColor="{StaticResource StarWhite}"
                                 PlaceholderColor="{StaticResource OrbitGray}" />
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
 
-                    <!-- Action buttons -->
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                        <Button Grid.Column="0"
+                        <!-- Action buttons -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <Button Grid.Column="0"
                                 Text="Cancel"
                                 Command="{Binding CancelEditCommand}"
                                 BackgroundColor="{StaticResource Button}" />
-                        <Button Grid.Column="1"
+                            <Button Grid.Column="1"
                                 Text="Save Entry"
                                 Command="{Binding SaveCommand}"
                                 BackgroundColor="{StaticResource NovaPurple}" />
-                    </Grid>
+                        </Grid>
 
-                </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </ScrollView>
             </Frame>
         </Grid>
 
@@ -175,7 +177,7 @@
                        HorizontalTextAlignment="Center" />
             </VerticalStackLayout>
 
-            <!-- Journal entries list — uses DataTemplate -->
+            <!-- Journal entries list -->
             <CollectionView Grid.Row="1"
                             x:Name="JournalList"
                             ItemsSource="{Binding Entries}"

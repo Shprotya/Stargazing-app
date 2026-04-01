@@ -191,7 +191,7 @@ public partial class JournalViewModel : ObservableObject
 
     // Rating helpers
     [RelayCommand]
-    public void SetRating(int rating) => EditRating = rating;
+    public void SetRating(string rating) => EditRating = int.TryParse(rating, out int r) ? r : 3;
 
     // Helper
     private void UpdateList(IEnumerable<JournalEntry> items)

@@ -1,9 +1,10 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-xmlns:converters="clr-namespace:StargazingApp.Converters"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:StargazingApp"
+             xmlns:converters="clr-namespace:StargazingApp.Converters"
              x:Class="StargazingApp.App">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -11,9 +12,9 @@ xmlns:converters="clr-namespace:StargazingApp.Converters"
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Value converters used by JournalPage -->
             <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
-            <converters:InverseBoolConverter    x:Key="InverseBoolConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
