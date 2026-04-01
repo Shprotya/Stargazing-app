@@ -16,5 +16,10 @@
             Title="Constellations"
             ContentTemplate="{DataTemplate views:ConstellationPage}"
             Route="ConstellationPage" />
+
+        <ShellContent
+            Title="Journal"
+            ContentTemplate="{DataTemplate views:JournalPage}"
+            Route="JournalPage" />
     </TabBar>
 </Shell>
