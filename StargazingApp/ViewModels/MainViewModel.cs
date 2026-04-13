@@ -33,6 +33,15 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private string visibilityRating = "Loading...";
     [ObservableProperty] private string locationName = "";
 
+    // Upcoming events
+    [ObservableProperty]
+    private List<string> upcomingEvents = new()
+    {
+        "Apr 22 — Lyrids Meteor Shower peak",
+        "May 6 — Eta Aquarids Meteor Shower peak",
+        "Jun 21 — Summer Solstice"
+    };
+
     public IAsyncRelayCommand LoadApodCommand { get; }
 
     public MainViewModel(NasaApiService nasaService, LocationService locationService, SevenTimerService sevenTimerService)
@@ -81,7 +90,7 @@ public partial class MainViewModel : ObservableObject
             ErrorMessage = $"Error: {ex.Message}";
         }
     }
-    
+
     private async Task LoadVisibilityAsync()
     {
         var location = await _locationService.GetLocationAsync();

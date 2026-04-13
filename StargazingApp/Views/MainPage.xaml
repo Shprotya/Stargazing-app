@@ -115,11 +115,12 @@
                     </Frame>
 
                     <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="Upcoming Events" FontSize="18" FontAttributes="Bold"/>
-                            <Label Text="• Apr 22 — Lyrids Meteor Shower peak" FontSize="13"/>
-                            <Label Text="• May 6 — Eta Aquarids Meteor Shower peak" FontSize="13"/>
-                            <Label Text="• Jun 21 — Summer Solstice" FontSize="13"/>
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding UpcomingEvents}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding StringFormat='• {0}'}" FontSize="13"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
                         </VerticalStackLayout>
                     </Frame>
 
