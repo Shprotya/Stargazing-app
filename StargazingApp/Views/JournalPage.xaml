@@ -13,7 +13,7 @@
         <!-- Editor overlay (shown when IsEditing = true) -->
         <Grid x:Name="EditorOverlay"
               IsVisible="{Binding IsEditing}"
-              BackgroundColor="#CC0B0E14"
+              BackgroundColor="{StaticResource Overlay}"
               ZIndex="10"
               Padding="40">
 

@@ -20,5 +20,7 @@
 
     <!--Highlights-->
     <Color x:Key="NovaPurple">#A855F7</Color>
-    
+
+    <Color x:Key="Overlay">#CC0B0E14</Color>
+
 </ResourceDictionary>
