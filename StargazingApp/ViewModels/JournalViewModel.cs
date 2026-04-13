@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using StargazingApp.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using StargazingApp.Services;
 
 
 namespace StargazingApp.ViewModels;

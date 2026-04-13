@@ -1,4 +1,6 @@
-﻿namespace StargazingApp;
+﻿using StargazingApp.Services;
+
+namespace StargazingApp;
 
 public partial class App : Application
 {
