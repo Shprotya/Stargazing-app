@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using StargazingApp.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 
 namespace StargazingApp.ViewModels;
@@ -49,7 +50,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal load error: {ex.Message}");
+            Debug.WriteLine($"Journal load error: {ex.Message}");
         }
     }
 
@@ -70,7 +71,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal search error: {ex.Message}");
+            Debug.WriteLine($"Journal search error: {ex.Message}");
         }
     }
 
@@ -88,7 +89,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal date filter error: {ex.Message}");
+            Debug.WriteLine($"Journal date filter error: {ex.Message}");
         }
     }
 
@@ -107,7 +108,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal month filter error: {ex.Message}");
+            Debug.WriteLine($"Journal month filter error: {ex.Message}");
         }
     }
 
@@ -156,7 +157,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal save error: {ex.Message}");
+            Debug.WriteLine($"Journal save error: {ex.Message}");
         }
     }
 
@@ -178,7 +179,7 @@ public partial class JournalViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Journal delete error: {ex.Message}");
+            Debug.WriteLine($"Journal delete error: {ex.Message}");
         }
     }
 

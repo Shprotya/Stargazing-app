@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SQLite;
 using StargazingApp.Models;
+using System.Diagnostics;
 
 public class DatabaseService
 {
@@ -80,7 +81,7 @@ public class DatabaseService
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Database Refresh Failed: {ex.Message}");
+            Debug.WriteLine($"Database Refresh Failed: {ex.Message}");
         }
     }
 

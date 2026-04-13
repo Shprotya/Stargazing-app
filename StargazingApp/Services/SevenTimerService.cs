@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StargazingApp.Models;
+using System.Diagnostics;
 
 namespace StargazingApp.Services;
 
@@ -26,7 +27,7 @@ public class SevenTimerService
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"7Timer error: {ex.Message}");
+            Debug.WriteLine($"7Timer error: {ex.Message}");
             return null;
         }
     }

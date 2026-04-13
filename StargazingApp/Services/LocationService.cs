@@ -1,4 +1,6 @@
-﻿namespace StargazingApp.Services;
+﻿using System.Diagnostics;
+
+namespace StargazingApp.Services;
 
 public class LocationService
 {
@@ -19,7 +21,7 @@ public class LocationService
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Location error: {ex.Message}");
+            Debug.WriteLine($"Location error: {ex.Message}");
             return null;
         }
     }
