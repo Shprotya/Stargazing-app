@@ -3,6 +3,7 @@ using SQLite;
 using StargazingApp.Models;
 using System.Diagnostics;
 
+namespace StargazingApp.Services;
 public class DatabaseService
 {
     private SQLiteAsyncConnection _database;
