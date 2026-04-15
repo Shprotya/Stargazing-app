@@ -22,10 +22,23 @@ public partial class ConstellationPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        // Initial load
+
+        // Always load the full list first (needed for the client-side cache)
         await _viewModel.LoadAllCommand.ExecuteAsync(null);
-        UpdateButtonColors(); // Set initial button state
-        _allConstellations = _viewModel.Constellations.ToList(); // Cache full list
+        UpdateButtonColors();
+
+        // Cache the FULL list for live typing filter
+        _allConstellations = _viewModel.Constellations.ToList();
+
+        // === FIX 1: Pre-filled search from "Tonight's Best" on MainPage ===
+        if (!string.IsNullOrWhiteSpace(_viewModel.SearchText))
+        {
+            var filtered = _allConstellations
+                .Where(c => c.Name.ToLower().Contains(_viewModel.SearchText.ToLower()))
+                .OrderBy(c => c.Name);
+
+            _viewModel.UpdateList(filtered);
+        }
     }
 
     private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -50,7 +63,7 @@ public partial class ConstellationPage : ContentPage
 
     private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(e.NewTextValue))
+        if (string.IsNullOrEmpty(e.NewTextValue))
         {
             _viewModel.UpdateList(_allConstellations);
             return;

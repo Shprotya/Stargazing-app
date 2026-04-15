@@ -17,9 +17,10 @@
 
                 <!-- Search Bar -->
                 <SearchBar x:Name="SearchBar"
-                Placeholder="Search constellations..."
-                TextChanged="OnSearchTextChanged"
-                SearchCommand="{Binding SearchCommand}"/>
+                    Text="{Binding SearchText, Mode=TwoWay}"
+                    Placeholder="Search constellations..."
+                    TextChanged="OnSearchTextChanged"
+                    SearchCommand="{Binding SearchCommand}"/>
 
                 <!--Filtering buttons-->
                 <HorizontalStackLayout Spacing="10">

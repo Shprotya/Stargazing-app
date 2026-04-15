@@ -50,17 +50,18 @@ public partial class ConstellationViewModel : ObservableObject
         UpdateList(items.OrderBy(c => c.Name)); // Sort by name
     }
 
+    // Parameterless and uses the bound
     [RelayCommand]
-    public async Task SearchAsync(string text)
+    public async Task SearchAsync()
     {
-        if (string.IsNullOrWhiteSpace(text))
+        if (string.IsNullOrWhiteSpace(SearchText))
         {
             await LoadAllAsync();
             return;
         }
 
-        var items = await _databaseService.SearchConstellationsAsync(text);
-        UpdateList(items.OrderBy(c => c.Name)); // Sort by name
+        var items = await _databaseService.SearchConstellationsAsync(SearchText);
+        UpdateList(items.OrderBy(c => c.Name));
     }
 
     [RelayCommand]
@@ -93,9 +94,6 @@ public partial class ConstellationViewModel : ObservableObject
     public async Task NavigateAndSearchAsync(string constellationName)
     {
         SearchText = constellationName;
-        await SearchAsync(constellationName);
-
-        // Navigate to the Stars tab
         await Shell.Current.GoToAsync("//ConstellationPage");
     }
 
