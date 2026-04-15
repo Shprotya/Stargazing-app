@@ -87,6 +87,7 @@
                         </VerticalStackLayout>
                     </Frame>
 
+                    <!-- Tonight's Visibility -->
                     <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="Tonight's Visibility" FontSize="18" FontAttributes="Bold"/>
@@ -114,6 +115,59 @@
                         </VerticalStackLayout>
                     </Frame>
 
+                    <!-- Tonight's Best Constellations -->
+                    <Frame BackgroundColor="{StaticResource Sections}"
+                        CornerRadius="15"
+                        Padding="15"
+                        IsVisible="{Binding HasTonightsBest}">
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="⭐ Tonight's Best"
+                                FontSize="18"
+                                FontAttributes="Bold"/>
+
+                            <Label x:Name="TonightMonthLabel"
+                                FontSize="11"
+                                TextColor="{StaticResource OrbitGray}"/>
+
+                            <CollectionView x:Name="TonightsBestList"
+                                        ItemsSource="{Binding TonightsBest}"
+                                        SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame BackgroundColor="{StaticResource Button}"
+                                            CornerRadius="8"
+                                            Padding="10,8"
+                                            Margin="0,0,0,6">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                Command="{Binding BindingContext.SelectConstellationCommand, Source={x:Reference TonightsBestList}}"
+                                                CommandParameter="{Binding Name}" />
+                                            </Frame.GestureRecognizers>
+                                            <Grid ColumnDefinitions="*,Auto">
+                                                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                                    <Label Text="{Binding Name}"
+                                                        FontSize="14"
+                                                        FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Hemisphere, StringFormat='🌍 {0}'}"
+                                                        FontSize="11"
+                                                        TextColor="{StaticResource OrbitGray}"/>
+                                                </VerticalStackLayout>
+                                                <Label Grid.Column="1"
+                                                    Text="›"
+                                                    FontSize="20"
+                                                    TextColor="{StaticResource NovaPurple}"
+                                                    VerticalOptions="Center"/>
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                        <!-- Upcoming Events -->
                     <Frame BackgroundColor="{StaticResource Sections}" CornerRadius="15" Padding="15">
                         <VerticalStackLayout BindableLayout.ItemsSource="{Binding UpcomingEvents}">
                             <BindableLayout.ItemTemplate>

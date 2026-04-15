@@ -14,7 +14,7 @@ public class DatabaseService
         if (_database is not null) return; // if already set up, do nothing
 
         // Find where to save the file on the device
-        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3"); 
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Stargazing.db3");
 
         _database = new SQLiteAsyncConnection(dbPath);
 
@@ -89,16 +89,16 @@ public class DatabaseService
     #region Filter & Search Methods
     public async Task<List<Constellation>> GetConstellationsAsync()
     {
-        await Init(); 
-        return await _database.Table<Constellation>().ToListAsync(); 
+        await Init();
+        return await _database.Table<Constellation>().ToListAsync();
     }
 
     public async Task<List<Constellation>> SearchConstellationsAsync(string searchTerm)
     {
-        await Init(); 
+        await Init();
         return await _database.Table<Constellation>()
             .Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()))
-            .ToListAsync(); 
+            .ToListAsync();
     }
 
     public async Task<List<Constellation>> GetConstellationsByHemisphereAsync(string hemisphere)
@@ -112,24 +112,37 @@ public class DatabaseService
             .ToListAsync();
     }
 
+    /// <summary>
+    /// Returns constellations that are best viewed in the given month and visible
+    /// from the specified hemisphere (includes "Both" hemisphere entries).
+    /// </summary>
+    public async Task<List<Constellation>> GetConstellationsByMonthAndHemisphereAsync(string month, string hemisphere)
+    {
+        await Init();
+        return await _database.Table<Constellation>()
+            .Where(c => c.BestVisibleMonth == month &&
+                       (c.Hemisphere == hemisphere || c.Hemisphere == "Both"))
+            .ToListAsync();
+    }
+
     public async Task<List<Constellation>> GetFavoriteConstellationsAsync()
     {
-        await Init(); 
+        await Init();
         return await _database.Table<Constellation>()
-            .Where(c => c.IsFavorite) 
-            .ToListAsync(); 
+            .Where(c => c.IsFavorite)
+            .ToListAsync();
     }
 
     public async Task ToggleFavoriteAsync(int constellationId)
     {
-        await Init(); 
+        await Init();
         var constellation = await _database.Table<Constellation>()
-            .FirstOrDefaultAsync(c => c.Id == constellationId); 
+            .FirstOrDefaultAsync(c => c.Id == constellationId);
 
         if (constellation != null)
         {
-            constellation.IsFavorite = !constellation.IsFavorite; 
-            await _database.UpdateAsync(constellation); 
+            constellation.IsFavorite = !constellation.IsFavorite;
+            await _database.UpdateAsync(constellation);
         }
     }
 

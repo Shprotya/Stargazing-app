@@ -12,8 +12,11 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
-        this.viewModel = viewModel;      
+        this.viewModel = viewModel;
         BindingContext = this.viewModel;
+
+        // Set the month label text directly — avoids XAML sys: namespace complexity
+        TonightMonthLabel.Text = $"Best viewing for {DateTime.Now:MMMM}";
     }
 
     // This ensures fresh data is loaded each time the user navigates to this page.

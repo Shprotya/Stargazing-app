@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using StargazingApp.Services;
 using StargazingApp.ViewModels;
-using StargazingApp.Views;    
+using StargazingApp.Views;
 
 namespace StargazingApp
 {
@@ -19,7 +19,7 @@ namespace StargazingApp
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             // Services registered as Singleton live for the entire application lifetime.
@@ -31,8 +31,10 @@ namespace StargazingApp
             builder.Services.AddSingleton<SevenTimerService>();
 
             // Register the View Models
-            builder.Services.AddSingleton<MainViewModel>();
+            // Note: ConstellationViewModel is registered before MainViewModel so DI
+            // can inject it into MainViewModel's constructor automatically.
             builder.Services.AddSingleton<ConstellationViewModel>();
+            builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<JournalViewModel>();
 
             // Register the Views
@@ -40,7 +42,6 @@ namespace StargazingApp
             builder.Services.AddSingleton<ConstellationPage>();
             builder.Services.AddSingleton<JournalPage>();
             builder.Services.AddSingleton<SkyMapPage>();
-
 
             return builder.Build();
         }

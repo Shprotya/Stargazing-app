@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using StargazingApp.Models;
 using StargazingApp.Services;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace StargazingApp.ViewModels;
@@ -13,6 +14,8 @@ public partial class MainViewModel : ObservableObject
     private readonly NasaApiService _nasaService;
     private readonly LocationService _locationService;
     private readonly SevenTimerService _sevenTimerService;
+    private readonly DatabaseService _databaseService;
+    private readonly ConstellationViewModel _constellationViewModel;
 
     [ObservableProperty] private ApodData apodData;
     [ObservableProperty] private bool isBusy;
@@ -33,6 +36,10 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private string visibilityRating = "Loading...";
     [ObservableProperty] private string locationName = "";
 
+    // Tonight's Best Constellations
+    [ObservableProperty] private ObservableCollection<Constellation> tonightsBest = new();
+    [ObservableProperty] private bool hasTonightsBest;
+
     // Upcoming events
     [ObservableProperty]
     private List<string> upcomingEvents = new()
@@ -43,13 +50,17 @@ public partial class MainViewModel : ObservableObject
     };
 
     public IAsyncRelayCommand LoadApodCommand { get; }
+    public IAsyncRelayCommand<string> SelectConstellationCommand { get; }
 
-    public MainViewModel(NasaApiService nasaService, LocationService locationService, SevenTimerService sevenTimerService)
+    public MainViewModel(NasaApiService nasaService, LocationService locationService, SevenTimerService sevenTimerService, DatabaseService databaseService, ConstellationViewModel constellationViewModel)
     {
         _nasaService = nasaService;
         _locationService = locationService;
         _sevenTimerService = sevenTimerService;
+        _databaseService = databaseService;
+        _constellationViewModel = constellationViewModel;
         LoadApodCommand = new AsyncRelayCommand(LoadAll);
+        SelectConstellationCommand = new AsyncRelayCommand<string>(name => _constellationViewModel.NavigateAndSearchAsync(name!));
 
         _clockTimer = new System.Threading.Timer(_ =>
         {
@@ -112,21 +123,45 @@ public partial class MainViewModel : ObservableObject
         if (isDaytime)
         {
             VisibilityRating = "☀️ It's daytime — check back after sunset.";
-            return;
         }
-
-        var conditions = await _sevenTimerService.GetCurrentConditionsAsync(location.Value.Lat, location.Value.Lon);
-        if (conditions == null)
+        else
         {
-            VisibilityRating = "⚠️ Could not load forecast";
-            return;
+            var conditions = await _sevenTimerService.GetCurrentConditionsAsync(location.Value.Lat, location.Value.Lon);
+            VisibilityRating = conditions != null
+                ? _sevenTimerService.GetVisibilityRating(conditions)
+                : "⚠️ Could not load forecast";
         }
 
-        //Debugging and location check
-        //VisibilityRating = $"📍 Got location: {location.Value.Lat:F3}, {location.Value.Lon:F3}";
+        // Determine hemisphere from latitude and load tonight's best constellations
+        var hemisphere = location.Value.Lat >= 0 ? "Northern" : "Southern";
+        var month = DateTime.Now.ToString("MMMM"); // e.g. "April"
+        await LoadTonightsBestAsync(month, hemisphere);
+    }
 
-        VisibilityRating = _sevenTimerService.GetVisibilityRating(conditions);
+    private async Task LoadTonightsBestAsync(string month, string hemisphere)
+    {
+        try
+        {
+            var results = await _databaseService.GetConstellationsByMonthAndHemisphereAsync(month, hemisphere);
 
+            // Take top 3, ordered by number of stars descending (most prominent first)
+            var top3 = results
+                .OrderByDescending(c => c.NumberOfStars)
+                .Take(3)
+                .ToList();
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                TonightsBest.Clear();
+                foreach (var c in top3)
+                    TonightsBest.Add(c);
+                HasTonightsBest = TonightsBest.Count > 0;
+            });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"TonightsBest load error: {ex.Message}");
+        }
     }
 
     private void CalculateMoonPhase()

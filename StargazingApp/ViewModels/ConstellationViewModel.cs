@@ -86,6 +86,19 @@ public partial class ConstellationViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// Called when the user taps a constellation from the Tonight's Best card on the Home page.
+    /// Navigates to the Stars tab and pre-fills the search with the constellation name.
+    /// </summary>
+    public async Task NavigateAndSearchAsync(string constellationName)
+    {
+        SearchText = constellationName;
+        await SearchAsync(constellationName);
+
+        // Navigate to the Stars tab
+        await Shell.Current.GoToAsync("//ConstellationPage");
+    }
+
     // Helper to avoid repeating Clear/Add logic
     public void UpdateList(IEnumerable<Constellation> items)
     {
