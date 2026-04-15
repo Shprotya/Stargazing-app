@@ -14,24 +14,28 @@
         <ShellContent
             Title="Home"
             Icon="home.png"
+            Shell.NavBarIsVisible="False"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="MainPage" />
 
         <ShellContent
             Title="Stars"
             Icon="star.png"
+            Shell.NavBarIsVisible="False"
             ContentTemplate="{DataTemplate views:ConstellationPage}"
             Route="ConstellationPage" />
 
         <ShellContent
             Title="Journal"
             Icon="journal.png"
+            Shell.NavBarIsVisible="False"
             ContentTemplate="{DataTemplate views:JournalPage}"
             Route="JournalPage" />
 
         <ShellContent
             Title="Sky Map"
             Icon="telescope.png"
+            Shell.NavBarIsVisible="False"
             ContentTemplate="{DataTemplate views:SkyMapPage}"
             Route="SkyMapPage" />
     </TabBar>
