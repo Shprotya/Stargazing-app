@@ -39,6 +39,7 @@ namespace StargazingApp
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<ConstellationPage>();
             builder.Services.AddSingleton<JournalPage>();
+            builder.Services.AddSingleton<SkyMapPage>();
 
 
             return builder.Build();
