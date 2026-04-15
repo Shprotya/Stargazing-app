@@ -4,7 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StargazingApp"
     xmlns:views="clr-namespace:StargazingApp.Views"
-    Title="StargazingApp">
+    Title="StargazingApp"
+    Shell.TabBarBackgroundColor="#0F1119"
+    Shell.TabBarForegroundColor="#A855F7"
+    Shell.TabBarUnselectedColor="#3D4460"
+    Shell.TabBarTitleColor="#A855F7">
 
     <TabBar>
         <ShellContent
