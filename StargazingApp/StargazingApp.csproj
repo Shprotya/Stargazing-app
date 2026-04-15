@@ -162,6 +162,9 @@
 	  <Compile Update="Views\JournalPage.xaml.cs">
 	    <DependentUpon>JournalPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\SkyMapPage.xaml.cs">
+	    <DependentUpon>SkyMapPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -169,6 +172,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\JournalPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SkyMapPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

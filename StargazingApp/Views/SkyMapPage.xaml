@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StargazingApp.Views.SkyMapPage"
+             Title="Sky Map">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Status bar -->
+        <Frame Grid.Row="0"
+               BackgroundColor="{StaticResource Sections}"
+               CornerRadius="0" Padding="16,10">
+            <Label x:Name="StatusLabel"
+                   Text="📍 Getting your location..."
+                   FontSize="13"
+                   TextColor="{StaticResource OrbitGray}"
+                   HorizontalTextAlignment="Center" />
+        </Frame>
+
+        <!-- Loading overlay -->
+        <Grid Grid.Row="1">
+            <WebView x:Name="SkyWebView"
+                     Source="https://stellarium-web.org"
+                     Navigated="OnNavigated" />
+
+            <VerticalStackLayout x:Name="LoadingOverlay"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="16">
+                <ActivityIndicator IsRunning="True"
+                                   Color="{StaticResource NovaPurple}"
+                                   WidthRequest="48"
+                                   HeightRequest="48" />
+                <Label Text="Loading sky map..."
+                       TextColor="{StaticResource OrbitGray}"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>

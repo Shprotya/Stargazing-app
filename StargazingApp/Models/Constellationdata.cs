@@ -15,7 +15,7 @@ public class ConstellationData
 }
 
 /// <summary>
-/// JSON representation of constellation data (matches the JSON structure)
+/// JSON representation of constellation data
 /// </summary>
 public class ConstellationJson
 {
