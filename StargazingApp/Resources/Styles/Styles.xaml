@@ -41,4 +41,12 @@
         <Setter Property="CornerRadius" Value="8" />
     </Style>
 
+    <!-- Tab Bar -->
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="Shell.TabBarBackgroundColor" Value="#0F1119" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="#94A3B8" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="#3D4460" />
+        <Setter Property="Shell.TabBarTitleColor" Value="#A855F7" />
+    </Style>
+
 </ResourceDictionary>
