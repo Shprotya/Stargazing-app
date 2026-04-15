@@ -13,22 +13,26 @@
     <TabBar>
         <ShellContent
             Title="Home"
+            Icon="🏠"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="MainPage" />
 
         <ShellContent
-            Title="Constellations"
+            Title="Stars"
+            Icon="✨"
             ContentTemplate="{DataTemplate views:ConstellationPage}"
             Route="ConstellationPage" />
 
         <ShellContent
             Title="Journal"
+            Icon="📓"
             ContentTemplate="{DataTemplate views:JournalPage}"
             Route="JournalPage" />
 
         <ShellContent
             Title="Sky Map"
+            Icon="🔭"
             ContentTemplate="{DataTemplate views:SkyMapPage}"
-            Route="SkyMapPage" />   
+            Route="SkyMapPage" />
     </TabBar>
 </Shell>
