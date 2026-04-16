@@ -67,23 +67,23 @@ public partial class ConstellationViewModel : ObservableObject
     [RelayCommand]
     public async Task ToggleFavoriteAsync(int constellationId)
     {
+        // 1. Update the database (this part stays the same)
         await _databaseService.ToggleFavoriteAsync(constellationId);
 
-        // Reload the current view to show updated star
-        switch (ActiveFilter)
+        // 2. Find the exact item that is currently displayed in the list
+        var displayedItem = Constellations.FirstOrDefault(c => c.Id == constellationId);
+
+        if (displayedItem != null)
         {
-            case "All":
-                await LoadAllAsync();
-                break;
-            case "Northern":
-                await FilterByHemisphereAsync("Northern");
-                break;
-            case "Southern":
-                await FilterByHemisphereAsync("Southern");
-                break;
-            case "Favorites":
-                await FilterFavoritesAsync();
-                break;
+            // Toggle locally → the star icon updates instantly because of ObservableProperty
+            displayedItem.IsFavorite = !displayedItem.IsFavorite;
+
+            // Special case: if we are in the "Favorites" tab and we just removed the favorite
+            if (ActiveFilter == "Favorites" && !displayedItem.IsFavorite)
+            {
+                Constellations.Remove(displayedItem);
+                // (no need to reload anything)
+            }
         }
     }
 
