@@ -3,7 +3,7 @@ using SQLite;
 
 namespace StargazingApp.Models;
 
-public class Constellation
+public partial class Constellation : ObservableObject
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
@@ -24,5 +24,6 @@ public class Constellation
     public int Area { get; set; }
     public string ImageUrl { get; set; }
 
-    public bool IsFavorite { get; set; }
+    [ObservableProperty]
+    private bool _isFavorite;
 }

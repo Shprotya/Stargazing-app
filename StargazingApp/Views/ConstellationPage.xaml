@@ -63,6 +63,13 @@
                            BackgroundColor="{StaticResource Sections}"
                            HasShadow="True">
 
+                            <!-- Make the whole card tappable -->
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference ConstellationList}}"
+                                    CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+
                             <Grid RowDefinitions="Auto,120,Auto,Auto,Auto" RowSpacing="8">
 
                                 <!-- Constellation Name -->

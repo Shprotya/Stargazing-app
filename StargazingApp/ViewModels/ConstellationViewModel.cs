@@ -104,4 +104,14 @@ public partial class ConstellationViewModel : ObservableObject
         foreach (var c in items)
             Constellations.Add(c);
     }
+
+    [RelayCommand]
+    public async Task ShowDetailsAsync(Constellation constellation)
+    {
+        if (constellation == null) return;
+
+        // We already have _databaseService injected, so we can pass it to the detail page
+        await Shell.Current.Navigation.PushAsync(
+            new StargazingApp.Views.ConstellationDetailPage(constellation, _databaseService));
+    }
 }

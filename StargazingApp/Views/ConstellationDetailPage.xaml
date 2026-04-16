@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StargazingApp.Views.ConstellationDetailPage"
+             Title="{Binding Name}">
+
+    <Grid>
+        <!-- Background -->
+        <Image Source="nightsky.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3" />
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="20">
+
+                <!-- Header: Name + Favorite -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0"
+                           Text="{Binding Name}"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" />
+
+                    <!-- Favorite Button (same style as gallery) -->
+                    <Button Grid.Column="1"
+                            FontSize="28"
+                            BackgroundColor="Transparent"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            Clicked="ToggleFavorite_Clicked"
+                            Padding="0">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding IsFavorite}"
+                                         Value="True">
+                                <Setter Property="Text" Value="⭐" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding IsFavorite}"
+                                         Value="False">
+                                <Setter Property="Text" Value="☆" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
+
+                <!-- Large Image -->
+                <Border StrokeThickness="0"
+                        BackgroundColor="{StaticResource Main}"
+                        Padding="8"
+                        HorizontalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Image Source="{Binding ImageUrl}"
+                           Aspect="AspectFit"
+                           HeightRequest="320" />
+                </Border>
+
+                <!-- Full Description -->
+                <Label Text="{Binding Description}"
+                       FontSize="16"
+                       TextColor="{StaticResource OrbitGray}"
+                       LineBreakMode="WordWrap" />
+
+                <!-- Details -->
+                <Label Text="Technical Details"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource NovaPurple}" />
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="{Binding Abbreviation, StringFormat='📌 Abbreviation: {0}'}" FontSize="15" />
+                    <Label Text="{Binding BestVisibleMonth, StringFormat='🌙 Best visible: {0}'}" FontSize="15" />
+                    <Label Text="{Binding Hemisphere, StringFormat='🧭 Hemisphere: {0}'}" FontSize="15" />
+                    <Label Text="{Binding VisibleLatitude, StringFormat='📍 Visible from: {0}'}" FontSize="15" />
+                    <Label Text="{Binding BrightestStar, StringFormat='⭐ Brightest star: {0}'}" FontSize="15" />
+                    <Label Text="{Binding NumberOfStars, StringFormat='✨ Number of stars: {0}'}" FontSize="15" />
+                    <Label Text="{Binding Area, StringFormat='📐 Area: {0} sq deg'}" FontSize="15" />
+                </VerticalStackLayout>
+
+                <Button Text="← Back to Gallery"
+                    Clicked="OnBackClicked"
+                    Style="{StaticResource Button}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
