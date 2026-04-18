@@ -50,10 +50,11 @@
                         SelectionMode="None"
                         ItemsSource="{Binding Constellations}">
                 <CollectionView.ItemsLayout>
+                    <!-- Responsive columns: 2 on phones, 3 on tablets, 4-5 on desktop -->
                     <GridItemsLayout Orientation="Vertical" 
-                                 Span="4"
-                                 HorizontalItemSpacing="12"
-                                 VerticalItemSpacing="12" />
+                         Span="{OnIdiom Phone=2, Tablet=3, Desktop=4, Default=3}"
+                         HorizontalItemSpacing="12"
+                         VerticalItemSpacing="16" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
